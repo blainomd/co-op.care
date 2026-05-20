@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
@@ -7,6 +7,14 @@ import Script from "next/script";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const newsreader = Newsreader({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -27,7 +35,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} h-full antialiased`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,7 +50,7 @@ export default function RootLayout({
             navigator.serviceWorker.register('/sw.js');
           }
         `}</Script>
-        <Script src="https://harnesshealth.ai/footer.js?v=8" data-brand="co-op.care" data-theme="light" strategy="lazyOnload" />
+        <Script src="https://harnesshealth.ai/footer.js?v=10" data-brand="co-op.care" data-theme="light" strategy="lazyOnload" />
       </body>
     </html>
   );

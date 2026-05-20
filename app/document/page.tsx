@@ -58,20 +58,44 @@ function ScaleButtons({ field, options, selected, onSelect }: {
   );
 }
 
-function FaceButton({ emoji, value, label, selected, onSelect }: {
-  emoji: string; value: string; label: string; selected: string; onSelect: (v: string) => void;
+const SCALE_COLORS: Record<string, string> = {
+  "1": "bg-amber-500",
+  "2": "bg-amber-400",
+  "3": "bg-stone-400",
+  "4": "bg-sage",
+  "5": "bg-sage-dark",
+};
+
+const SCALE_WORDS: Record<string, string> = {
+  "1": "Poor",
+  "2": "Low",
+  "3": "Okay",
+  "4": "Good",
+  "5": "Strong",
+};
+
+function FaceButton({ value, label, selected, onSelect }: {
+  value: string; label: string; selected: string; onSelect: (v: string) => void;
 }) {
   const isSelected = selected === value;
+  const dotColor = SCALE_COLORS[value] ?? "bg-stone-400";
+  const word = SCALE_WORDS[value] ?? label;
   return (
     <button
       type="button"
       onClick={() => onSelect(value)}
-      className={`flex-1 py-2.5 rounded-xl border-2 text-center transition-all ${
+      aria-label={`${word} — ${value} of 5`}
+      className={`flex-1 py-3 rounded-xl border-2 text-center transition-all flex flex-col items-center gap-1.5 ${
         isSelected ? "border-sage-dark bg-sage-50 scale-105" : "border-sage-light/20 bg-white hover:border-sage"
       }`}
     >
-      <div className="text-2xl">{emoji}</div>
-      <div className={`text-xs mt-1 ${isSelected ? "text-sage-dark font-semibold" : "text-bark-light/50"}`}>{label}</div>
+      <span
+        aria-hidden="true"
+        className={`block w-3 h-3 rounded-full ${dotColor} ${isSelected ? "ring-2 ring-sage-dark/40 ring-offset-1" : ""}`}
+      />
+      <span className={`text-[11px] font-semibold tracking-wide ${isSelected ? "text-sage-dark" : "text-bark-light/60"}`}>
+        {word}
+      </span>
     </button>
   );
 }
@@ -210,11 +234,11 @@ export default function DocumentPage() {
             <p className="text-sm font-semibold text-bark mb-3">How is {patientName.split(" ")[0]} today?</p>
             <div className="flex gap-2">
               {[
-                { emoji: "😟", value: "1", label: "1" },
-                { emoji: "😕", value: "2", label: "2" },
-                { emoji: "😐", value: "3", label: "3" },
-                { emoji: "🙂", value: "4", label: "4" },
-                { emoji: "😁", value: "5", label: "5" },
+                { value: "1", label: "1" },
+                { value: "2", label: "2" },
+                { value: "3", label: "3" },
+                { value: "4", label: "4" },
+                { value: "5", label: "5" },
               ].map((f) => (
                 <FaceButton key={f.value} {...f} selected={assessment.wellness} onSelect={(v) => selectAssessment("wellness", v)} />
               ))}

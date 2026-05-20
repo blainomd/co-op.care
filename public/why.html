@@ -1,0 +1,2213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Why co-op.care exists · Boulder Startup Week 2026</title>
+<meta name="description" content="Build a care grid. Plug in. Neighborhood infrastructure anyone can plug into — ten skill categories, four currencies of pay, a generational bridge through Boulder's high schools.">
+<meta property="og:title" content="Why co-op.care exists · Build a care grid. Plug in.">
+<meta property="og:url" content="https://co-op.care/why">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Nunito:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:       #FAF6EA;
+  --paper-dim:   #F2EDDB;
+  --paper-deep:  #E9DFC3;
+  --card:        #FFFFFF;
+  --ink:         #2A1F15;
+  --ink-dim:     #52443A;
+  --ink-soft:    #8B7A6E;
+  --rule:        #D8C9A8;
+  --terra:       #C9644E;
+  --terra-soft:  #F9E4DC;
+  --terra-deep:  #A5513F;
+  --sage:        #6B8E5A;
+  --hotblue:     #1F4CFF;
+  --hotblue-tint:#EDF0FF;
+  --hotblue-deep:#1638C7;
+  --gold:        #C5A257;
+  --night:       #1A1509;
+  --night-paper: #FFFDF5;
+  --night-acc:   #FFB98F;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  line-height: 1.5;
+}
+.serif { font-family: 'Cormorant Garamond', Georgia, serif; font-optical-sizing: auto; }
+.mono  { font-family: 'Space Mono', ui-monospace, monospace; letter-spacing: 0.03em; }
+
+/* hide site nav on the deck page — it steals height from a full-screen presentation */
+#coop-unified-nav { display: none !important; }
+
+.deck { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+
+.slide {
+  position: absolute; inset: 0;
+  padding: clamp(2rem, 6vh, 6rem) clamp(2rem, 9vw, 9rem);
+  display: none;
+  place-items: center;
+  text-align: center;
+  background: var(--paper);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.slide.active { display: grid; opacity: 1; }
+.slide[data-bg="dark"]  { background: var(--night); color: var(--night-paper); }
+.slide[data-bg="terra"] { background: var(--terra); color: #FFFDF5; }
+.slide[data-bg="dim"]   { background: var(--paper-dim); }
+.slide[data-bg="blue"]  { background: var(--hotblue-tint); }
+
+.slide-inner { width: 100%; max-width: 1400px; }
+
+.kicker {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.7rem, 1.1vw, 0.88rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: clamp(1.2rem, 3vh, 2.4rem);
+  display: inline-block;
+}
+.slide[data-bg="dark"] .kicker  { color: var(--night-acc); }
+.slide[data-bg="terra"] .kicker { color: rgba(255,253,245,0.82); }
+.slide[data-bg="blue"] .kicker  { color: var(--hotblue-deep); }
+
+h1.mega {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: clamp(1rem, 3vh, 2rem);
+}
+h1.mega em { font-style: italic; color: var(--terra); font-weight: 500; }
+.slide[data-bg="terra"] h1.mega { color: #FFFDF5; }
+.slide[data-bg="terra"] h1.mega em { color: #FFE9DE; font-style: italic; }
+.slide[data-bg="dark"] h1.mega { color: var(--night-paper); }
+.slide[data-bg="dark"] h1.mega em { color: var(--night-acc); }
+.slide[data-bg="blue"] h1.mega em { color: var(--hotblue); }
+
+h2.big {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+}
+h2.big em { font-style: italic; color: var(--terra); font-weight: 500; }
+.slide[data-bg="blue"] h2.big em { color: var(--hotblue); font-style: italic; }
+/* Fix: dark slides need light h2.big (was inheriting var(--ink) → invisible on var(--night)) */
+.slide[data-bg="dark"] h2.big { color: var(--night-paper); }
+.slide[data-bg="terra"] h2.big { color: #FFFDF5; }
+
+.deck-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  line-height: 1.3;
+  color: var(--ink-dim);
+  max-width: 940px;
+  margin: 0 auto;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+.slide[data-bg="terra"] .deck-sub { color: rgba(255,253,245,0.92); }
+.slide[data-bg="dark"] .deck-sub  { color: rgba(255,253,245,0.78); }
+
+.meta-byline {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.72rem, 1vw, 0.88rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: clamp(2rem, 5vh, 4rem);
+  line-height: 1.7;
+}
+.slide[data-bg="terra"] .meta-byline { color: rgba(255,253,245,0.8); }
+.slide[data-bg="dark"] .meta-byline  { color: rgba(255,253,245,0.6); }
+
+/* Slide 1 title accent */
+.brand-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  color: var(--terra);
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+  letter-spacing: -0.015em;
+}
+.brand-mark::before {
+  content: "";
+  display: inline-block;
+  width: 14px; height: 14px;
+  background: var(--terra);
+  border-radius: 50%;
+  margin-right: 14px;
+  vertical-align: 2px;
+}
+
+/* Three-up stats */
+.three-up {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vh, 4rem);
+  margin: clamp(2rem, 5vh, 4rem) 0;
+}
+@media (min-width: 880px) { .three-up { grid-template-columns: 1fr 1fr 1fr; } }
+.stat {
+  padding: 0 clamp(0.8rem, 2vw, 2rem);
+}
+.stat .big-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.stat .caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: var(--ink-dim);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Ten skills grid */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
+  max-width: 1200px;
+  margin: 1rem auto 0;
+}
+@media (min-width: 920px) { .skills { grid-template-columns: repeat(5, 1fr); } }
+.skill-tile {
+  padding: clamp(0.9rem, 1.8vh, 1.3rem);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  text-align: left;
+  transition: border-color 0.18s;
+}
+.skill-tile:hover { border-color: var(--terra); }
+.skill-tile.hero {
+  background: var(--hotblue-tint);
+  border-color: var(--hotblue);
+}
+.skill-tile .n {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.62rem, 0.85vw, 0.7rem);
+  letter-spacing: 0.18em;
+  color: var(--terra);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.skill-tile.hero .n { color: var(--hotblue); }
+.skill-tile h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  margin-bottom: 0.3rem;
+  line-height: 1.1;
+}
+.skill-tile.hero h4 { color: var(--hotblue-deep); }
+.skill-tile p {
+  font-size: clamp(0.78rem, 1.02vw, 0.88rem);
+  color: var(--ink-dim);
+  line-height: 1.35;
+}
+
+/* Teens block */
+.teens-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 2rem auto 0;
+}
+@media (min-width: 860px) { .teens-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.teen-earn {
+  background: var(--card);
+  border: 1px solid var(--hotblue-tint);
+  border-radius: 16px;
+  padding: clamp(1.2rem, 2.5vh, 1.8rem);
+  text-align: left;
+  box-shadow: 0 14px 30px -20px rgba(31,76,255,0.25);
+}
+.teen-earn h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-style: italic;
+  color: var(--hotblue);
+  letter-spacing: -0.015em;
+  margin-bottom: 0.5rem;
+}
+.teen-earn p { font-size: clamp(0.9rem, 1.1vw, 1rem); color: var(--ink-dim); line-height: 1.45; }
+
+/* Entries two cards */
+.entries2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  max-width: 1150px;
+  margin: 1.2rem auto 0;
+}
+@media (min-width: 860px) { .entries2 { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+.entry-card {
+  background: var(--card);
+  border: 1.5px solid var(--rule);
+  border-radius: 20px;
+  padding: clamp(1.4rem, 3vh, 2rem);
+  text-align: left;
+  transition: border-color 0.2s;
+}
+.entry-card:hover { border-color: var(--terra); }
+.entry-card.blue { border-color: var(--hotblue-tint); }
+.entry-card.blue:hover { border-color: var(--hotblue); }
+.entry-card .tag {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.68rem, 0.92vw, 0.74rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.entry-card.blue .tag { color: var(--hotblue); }
+.entry-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-style: italic;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.8rem;
+  line-height: 1.1;
+}
+.entry-card p {
+  font-size: clamp(0.92rem, 1.15vw, 1rem);
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+
+/* Story */
+.story-block {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: left;
+}
+.story-block p {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.4vw, 2.2rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 0.9rem;
+}
+.story-block p strong { font-weight: 500; color: var(--terra); }
+.story-block .story-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.72rem, 1.05vw, 0.86rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 1.4rem;
+  display: block;
+}
+.story-block .story-closer {
+  margin-top: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  color: var(--ink-dim);
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* Role grid (final slide) */
+.roles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  max-width: 1100px;
+  margin: 1.2rem auto 0;
+}
+@media (min-width: 760px) { .roles { grid-template-columns: 1fr 1fr; } }
+/* Selectors apply to both <a class="role-row"> (anchor-routed) AND <div class="role-row"> (reflective/votable) */
+.role-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.2rem;
+  align-items: center;
+  padding: clamp(0.9rem, 1.8vh, 1.2rem) clamp(1rem, 2.3vw, 1.5rem);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s, border-color 0.15s;
+  text-align: left;
+}
+a.role-row:hover { transform: translateX(4px); border-color: var(--terra); }
+.role-row .n {
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  background: var(--terra-soft);
+  color: var(--terra);
+  border-radius: 50%;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.role-row .who {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.role-row .who .sub {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58em;
+  color: var(--ink-soft);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+a.role-row .arrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--terra);
+  font-style: italic;
+}
+
+/* Chrome — mobile-friendly fixed nav bar (replaces old .counter + .hint) */
+.deck-nav {
+  position: fixed;
+  bottom: clamp(0.6rem, 2vh, 1.2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0,0,0,0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 999px;
+  padding: 6px;
+  z-index: 100;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 12px 30px -16px rgba(0,0,0,0.5);
+}
+body:not(.dark-chrome) .deck-nav {
+  background: rgba(255,253,245,0.92);
+  border-color: rgba(0,0,0,0.08);
+}
+.deck-nav .nav-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,253,245,0.88);
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(13px, 1.6vw, 14px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.14s, color 0.14s;
+  -webkit-tap-highlight-color: transparent;
+}
+body:not(.dark-chrome) .deck-nav .nav-btn { color: var(--ink); }
+.deck-nav .nav-btn:hover { background: rgba(255,255,255,0.12); }
+body:not(.dark-chrome) .deck-nav .nav-btn:hover { background: rgba(0,0,0,0.06); }
+.deck-nav .nav-counter {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(11px, 1.3vw, 12px);
+  letter-spacing: 0.18em;
+  color: rgba(255,253,245,0.6);
+  padding: 0 10px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+body:not(.dark-chrome) .deck-nav .nav-counter { color: var(--ink-soft); }
+.deck-nav .nav-btn:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+/* Persistent ComfortCard CTA in the nav bar — teal accent, anchor styling */
+.deck-nav .nav-btn-card {
+  background: #0D7377;
+  color: #FFFDF5;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #0D7377;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+}
+.deck-nav .nav-btn-card::before {
+  content: "";
+  display: inline-block;
+  width: 14px; height: 10px;
+  background: #FFFDF5;
+  border-radius: 2px;
+  box-shadow: inset 0 -3px 0 #0D7377;
+}
+.deck-nav .nav-btn-card:hover { background: #0a5a5d; border-color: #0a5a5d; }
+body:not(.dark-chrome) .deck-nav .nav-btn-card { color: #FFFDF5; }
+body:not(.dark-chrome) .deck-nav .nav-btn-card:hover { color: #FFFDF5; }
+@media (max-width: 480px) {
+  .deck-nav .nav-btn-card { padding: 8px 10px; font-size: 12px; }
+  .deck-nav .nav-btn-card::before { display: none; }
+}
+
+/* Tappable vote tile state — applies to skill-tiles, entry-cards, role-rows, qa-seeds when interactive */
+.tap-vote {
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.16s, box-shadow 0.16s, background 0.16s;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+.tap-vote:hover { transform: translateY(-2px); }
+.tap-vote.voted {
+  background: var(--sage-soft) !important;
+  border-color: var(--sage) !important;
+}
+.slide[data-bg="dark"] .tap-vote.voted {
+  background: rgba(107,142,90,0.22) !important;
+  border-color: rgba(107,142,90,0.6) !important;
+}
+.tap-vote.voted::after {
+  content: "✓ Voted";
+  position: absolute;
+  top: 8px; right: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--sage-deep);
+  background: rgba(255,253,245,0.95);
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.slide[data-bg="dark"] .tap-vote.voted::after {
+  background: rgba(107,142,90,0.32);
+  color: #d4ead0;
+}
+/* Vote count badge (live tally — shown when count > 0) */
+.tap-vote .vote-count {
+  position: absolute;
+  bottom: 6px; right: 10px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.slide[data-bg="dark"] .tap-vote .vote-count { color: rgba(255,253,245,0.5); }
+.tap-vote .vote-count.show { opacity: 1; }
+
+/* Audience-prompt cue (already exists inline; add a generic class for tappable seeds) */
+.qa-seed {
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.16s;
+  -webkit-tap-highlight-color: transparent;
+}
+.qa-seed:hover { transform: translateY(-1px); border-color: rgba(255,185,143,0.55) !important; }
+
+/* Slide 13 — rating grid (12 cards × thumbs up/down) + idea capture */
+.rate-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: left;
+}
+@media (min-width: 720px) {
+  .rate-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+}
+.rate-card {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.rate-card:hover { border-color: var(--terra); box-shadow: 0 6px 14px -10px rgba(201,100,78,0.3); }
+.rate-card .rate-n {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--terra);
+  font-weight: 600;
+}
+.rate-card .rate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.rate-actions { display: flex; gap: 4px; }
+.rate-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--rule);
+  color: var(--ink-soft);
+  font-size: 16px;
+  width: 44px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.14s, border-color 0.14s, color 0.14s, transform 0.1s;
+  font-family: inherit;
+  font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 720px) {
+  .rate-btn { width: 40px; height: 36px; font-size: 15px; }
+}
+/* Subtle hover (desktop) — visible but distinct from active */
+.rate-btn.up:hover { border-color: var(--sage); }
+.rate-btn.down:hover { border-color: var(--terra); }
+/* Browser focus ring — keep it visible for keyboard nav, but only on focus-visible */
+.rate-btn:focus-visible { box-shadow: 0 0 0 3px rgba(31,76,255,0.25); }
+.rate-btn:focus:not(:focus-visible) { outline: none; }
+/* Pressed feedback */
+.rate-btn:active { transform: scale(0.94); }
+/* THE CLEAR ACTIVE STATE — full color fill, white arrow, no ambiguity */
+.rate-btn.up.active {
+  background: var(--sage-deep) !important;
+  border-color: var(--sage-deep) !important;
+  color: #FFFFFF !important;
+}
+.rate-btn.down.active {
+  background: var(--terra) !important;
+  border-color: var(--terra) !important;
+  color: #FFFFFF !important;
+}
+
+.hint {
+  position: fixed;
+  bottom: clamp(1rem, 2vh, 1.6rem);
+  left: clamp(1rem, 2vw, 2rem);
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.65rem, 0.85vw, 0.76rem);
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  z-index: 10;
+  opacity: 0.6;
+  display: none; /* hidden — kept for keyboard-shortcut hint, prefer .deck-nav for mobile */
+}
+@media (min-width: 1100px) { .hint { display: block; } }
+.hint kbd {
+  display: inline-block;
+  padding: 2px 7px;
+  background: var(--paper-dim);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 0.9em;
+  margin: 0 1px;
+}
+
+@media print {
+  html, body { height: auto; overflow: visible; }
+  .deck { height: auto; }
+  .slide { display: grid; position: relative; page-break-after: always; min-height: 100vh; opacity: 1; }
+  .counter, .hint { display: none; }
+}
+</style>
+<script src="/nav.js" defer></script>
+<script src="/footer-cta.js" defer></script>
+</head>
+
+<body data-page="why-deck">
+<!-- ── Hide ASK SAGE pill (.hh-fab) on the deck surface ─────────────
+     The deck has its own bottom-fixed nav (Back / counter / Voice /
+     Card / Next) which collides with the floating Sage button at
+     bottom-right. The deck is a presentation surface, not a chat
+     surface; Sage isn't useful during a panel. Hide it entirely on
+     this page.  Apr 26 2026 hardening pass.  ─────────────────────── -->
+<style>.hh-fab, [data-coop-auth] { display: none !important; }</style>
+
+<div class="deck">
+
+  <!-- 1 · TITLE — manifesto opener -->
+  <section class="slide active" data-idx="1">
+    <div class="slide-inner">
+      <div class="brand-mark">co-op.care</div>
+      <div class="kicker" style="margin-bottom:1.4rem;">The manifesto · April 2026</div>
+      <h1 class="mega serif">Of the community.<br>By the community.<br><em>For the community.</em></h1>
+      <div class="deck-sub serif">A health system run by the people who live in it. Care from neighbors. Membership owned by everyone who contributes. Physician-attested. Built in public on the backs of AI.</div>
+      <div class="meta-byline">
+        Boulder Startup Week · 2026 · May 4 · RegenHub<br>
+        Josh Emdur, DO &nbsp;<span style="opacity:0.5">moderator</span>&nbsp; · &nbsp;
+        Blaine Warkentine, MD &nbsp;<span style="opacity:0.5">the business</span>&nbsp; · &nbsp;
+        Jess Dion &nbsp;<span style="opacity:0.5">the family</span>&nbsp; · &nbsp;
+        Kristin Apple &nbsp;<span style="opacity:0.5">the data</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.A · HIDDEN -->
+  <section class="slide-hidden" data-idx="1.A" data-bg="terra" style="display:none">
+    <div class="slide-inner">
+      <div class="kicker" style="color:#FFE9DE;">The thesis · five pillars</div>
+      <h2 class="big serif" style="color:#FFFDF5;max-width:1100px;margin:0 auto 2.4rem;font-size:clamp(1.6rem,3.2vw,2.4rem);">
+        Behavior is where it starts.<br>
+        <em style="color:#FFE9DE;">Ownership is what makes it stick.</em>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;max-width:1100px;margin:0 auto;text-align:left;">
+        <div style="padding:1.1rem 1.2rem;background:rgba(255,253,245,0.08);border:1px solid rgba(255,253,245,0.18);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.5rem;">01</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:#FFFDF5;line-height:1.3;">Community ownership</div>
+          <div style="font-size:0.84rem;color:rgba(255,253,245,0.78);line-height:1.5;margin-top:0.4rem;">LCA legal form. Patron-member share. One vote. Patronage dividend.</div>
+        </div>
+        <div style="padding:1.1rem 1.2rem;background:rgba(255,253,245,0.08);border:1px solid rgba(255,253,245,0.18);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.5rem;">02</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:#FFFDF5;line-height:1.3;">New infrastructure</div>
+          <div style="font-size:0.84rem;color:rgba(255,253,245,0.78);line-height:1.5;margin-top:0.4rem;">Built around the patient — wallet, vault, ledger, agents. Not retrofitted.</div>
+        </div>
+        <div style="padding:1.1rem 1.2rem;background:rgba(255,253,245,0.08);border:1px solid rgba(255,253,245,0.18);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.5rem;">03</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:#FFFDF5;line-height:1.3;">AI educates · physicians attest</div>
+          <div style="font-size:0.84rem;color:rgba(255,253,245,0.78);line-height:1.5;margin-top:0.4rem;">AI scales the question. A licensed physician signs the answer. Hashcare-receipted.</div>
+        </div>
+        <div style="padding:1.1rem 1.2rem;background:rgba(255,253,245,0.08);border:1px solid rgba(255,253,245,0.18);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.5rem;">04</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:#FFFDF5;line-height:1.3;">Behavior → ownership compound</div>
+          <div style="font-size:0.84rem;color:rgba(255,253,245,0.78);line-height:1.5;margin-top:0.4rem;">Every behavior becomes an attested record. Every record lives in your wallet. Every wallet is a member-share.</div>
+        </div>
+        <div style="padding:1.1rem 1.2rem;background:rgba(255,253,245,0.12);border:1px solid rgba(255,253,245,0.28);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.5rem;">05</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:#FFFDF5;line-height:1.3;">Scale through reciprocity</div>
+          <div style="font-size:0.84rem;color:rgba(255,253,245,0.85);line-height:1.5;margin-top:0.4rem;">Not extraction. The contributors are the owners. Investors structurally cannot buy them out.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.B · HIDDEN -->
+  <section class="slide-hidden" data-idx="1.B" data-bg="dark" style="display:none">
+    <div class="slide-inner">
+      <div class="kicker" style="color:var(--night-acc);">The unit economics</div>
+      <h1 class="mega serif" style="color:#FFFDF5;font-size:clamp(2.2rem,4.8vw,3.6rem);">The same shift<br><em style="color:var(--night-acc);">pays twice.</em></h1>
+      <div style="margin:2rem auto;max-width:880px;text-align:left;font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.7;color:rgba(255,253,245,0.86);">
+        <div style="margin-bottom:1rem;"><strong style="color:#FFFDF5;font-weight:600;">Patient pays</strong> — $19/mo membership, OR contributes 10 hours / year.</div>
+        <div style="margin-bottom:1rem;color:rgba(255,253,245,0.55);">↓</div>
+        <div style="margin-bottom:1rem;"><strong style="color:#FFFDF5;font-weight:600;">A neighbor caregiver shows up.</strong> Drives mom to the appointment. Cooks the meal. Sets up the smart speaker.</div>
+        <div style="margin-bottom:1rem;color:rgba(255,253,245,0.55);">↓</div>
+        <div style="margin-bottom:1rem;"><strong style="color:#FFFDF5;font-weight:600;">An attested SDOH observation</strong> is captured. Physician-reviewed. Hashcare-signed. ICD-coded.</div>
+        <div style="margin-bottom:1rem;color:rgba(255,253,245,0.55);">↓</div>
+        <div style="margin-bottom:1rem;"><strong style="color:#FFFDF5;font-weight:600;">The payer pays</strong> — $5–15 PMPM for the attestation feed, plus risk-adjustment uplift.</div>
+        <div style="margin-bottom:1rem;color:rgba(255,253,245,0.55);">↓</div>
+        <div><strong style="color:var(--night-acc);font-weight:600;">The same shift just paid twice. The contributor owns a share of the system that received both checks.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.C · HIDDEN -->
+  <section class="slide-hidden" data-idx="1.C" style="display:none">
+    <div class="slide-inner">
+      <div class="kicker">If everyone contributes 10 hours a year</div>
+      <h1 class="mega serif" style="font-size:clamp(2rem,4.4vw,3.2rem);max-width:920px;margin:0 auto 2rem;">We become the most valuable company in the world &mdash;<br><em>owned by the people whose lives it runs in.</em></h1>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:1080px;margin:0 auto;text-align:left;">
+        <div style="padding:1.2rem 1.4rem;background:rgba(201,100,78,0.08);border:1px solid rgba(201,100,78,0.25);border-radius:12px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.6rem;color:var(--terra);line-height:1;">1,000</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);margin:0.5rem 0 0.4rem;">members × 10 hrs</div>
+          <div style="font-size:0.9rem;color:var(--ink-dim);line-height:1.5;">Boulder neighborhood pilot. Everyone at this talk fits in this number.</div>
+        </div>
+        <div style="padding:1.2rem 1.4rem;background:rgba(201,100,78,0.08);border:1px solid rgba(201,100,78,0.25);border-radius:12px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.6rem;color:var(--terra);line-height:1;">100,000</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);margin:0.5rem 0 0.4rem;">members × 10 hrs</div>
+          <div style="font-size:0.9rem;color:var(--ink-dim);line-height:1.5;">A US city. A school district at full enrollment. A mid-state Medicare Advantage book.</div>
+        </div>
+        <div style="padding:1.2rem 1.4rem;background:rgba(201,100,78,0.08);border:1px solid rgba(201,100,78,0.25);border-radius:12px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.6rem;color:var(--terra);line-height:1;">10,000,000</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-soft);margin:0.5rem 0 0.4rem;">members × 10 hrs</div>
+          <div style="font-size:0.9rem;color:var(--ink-dim);line-height:1.5;">A major employer's full benefits cohort. A state plan.</div>
+        </div>
+        <div style="padding:1.2rem 1.4rem;background:var(--terra);border:1px solid var(--terra-deep);border-radius:12px;color:#FFFDF5;">
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.6rem;color:#FFFDF5;line-height:1;">1,000,000,000</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,253,245,0.78);margin:0.5rem 0 0.4rem;">members × 10 hrs × $25/hr</div>
+          <div style="font-size:0.95rem;color:#FFFDF5;line-height:1.5;font-weight:600;">$250 billion / year of coordinated mutual aid. Owned by the contributors themselves.</div>
+        </div>
+      </div>
+      <div class="meta-byline" style="margin-top:1.6rem;">Mondragon at 80,000 sustained workers is the largest cooperative ever built. The architecture of the most valuable company that has ever existed.</div>
+    </div>
+  </section>
+
+  <!-- 1.D · HIDDEN -->
+  <section class="slide-hidden" data-idx="1.D" data-bg="terra" style="display:none">
+    <div class="slide-inner">
+      <div class="kicker" style="color:#FFE9DE;">Why now · April 28, six days ago</div>
+      <h1 class="mega serif" style="color:#FFFDF5;font-size:clamp(2rem,4.6vw,3.4rem);max-width:1100px;margin:0 auto 1.4rem;">
+        The federal regulator<br>
+        <em style="color:#FFE9DE;">just named our market.</em>
+      </h1>
+      <div class="deck-sub serif" style="color:rgba(255,253,245,0.92);max-width:920px;margin:0 auto 2rem;">
+        CMS Administrator Mehmet Oz at the Paragon Health Institute named Home and Community-Based Services
+        as the high-risk fraud sector. All 50 states have 30 days to submit program-integrity plans. End self-attestation.
+        Move to robust cross-checks and physician-attested infrastructure.
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:1080px;margin:0 auto;text-align:left;">
+        <div style="padding:1rem 1.2rem;background:rgba(255,253,245,0.10);border:1px solid rgba(255,253,245,0.22);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.45rem;">The problem he named</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#FFFDF5;line-height:1.4;">HCBS fraud. Self-attested eligibility. Provider-tax financing gimmicks.</div>
+        </div>
+        <div style="padding:1rem 1.2rem;background:rgba(255,253,245,0.10);border:1px solid rgba(255,253,245,0.22);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.45rem;">The fix he prescribed</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#FFFDF5;line-height:1.4;">Robust cross-checks. Physician-attested infrastructure. In-person verification for high-risk services.</div>
+        </div>
+        <div style="padding:1rem 1.2rem;background:rgba(255,253,245,0.16);border:1px solid rgba(255,253,245,0.34);border-radius:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.45rem;">What we already operate</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#FFFDF5;line-height:1.4;font-weight:600;">Worker-owned cooperative + ClinicalSwipe attestation + Hashcare-receipted ledger. Un-fraudable by architecture.</div>
+        </div>
+      </div>
+      <div class="meta-byline" style="color:rgba(255,253,245,0.8);margin-top:1.8rem;">Paragon Health Institute · Apr 28 2026 · Dr. Mehmet Oz, CMS Administrator</div>
+    </div>
+  </section>
+
+  <!-- 1.E · HIDDEN -->
+  <section class="slide-hidden" data-idx="1.E" style="display:none">
+    <div class="slide-inner">
+      <div class="kicker">The bottleneck moved · 30 days, four vantages</div>
+      <h2 class="big serif" style="font-size:clamp(1.8rem,3.6vw,2.8rem);max-width:1100px;margin:0 auto 2rem;">
+        From four entirely different rooms,<br>
+        <em>the same conclusion.</em>
+      </h2>
+      <div style="display:grid;grid-template-columns:1fr;gap:1rem;max-width:1180px;margin:0 auto;text-align:left;">
+        <div style="display:grid;grid-template-columns:1fr;gap:1rem;" class="receipt-grid"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;max-width:1180px;margin:0 auto;text-align:left;">
+        <div style="padding:1.2rem 1.3rem;background:var(--card);border:1px solid var(--rule);border-radius:14px;border-top:4px solid var(--terra);">
+          <div style="font-family:'Space Mono',monospace;font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:0.4rem;">Peer-reviewed · Apr 13</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:var(--ink);line-height:1.3;margin-bottom:0.4rem;">Rao et al., JAMA Open</div>
+          <div style="font-size:0.86rem;color:var(--ink-dim);line-height:1.45;">21 frontier LLMs. Differential-diagnosis failure rate &gt;0.80. Conclusion in their words: <em>"targeted, clinician-supervised use in low-uncertainty tasks."</em></div>
+        </div>
+        <div style="padding:1.2rem 1.3rem;background:var(--card);border:1px solid var(--rule);border-radius:14px;border-top:4px solid var(--terra);">
+          <div style="font-family:'Space Mono',monospace;font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:0.4rem;">Regulatory · Apr 28 (six days ago)</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:var(--ink);line-height:1.3;margin-bottom:0.4rem;">CMS Administrator Oz</div>
+          <div style="font-size:0.86rem;color:var(--ink-dim);line-height:1.45;">HCBS named as a high-risk fraud sector. 50 states · 30 days to submit program-integrity plans. End self-attestation. Move to physician-attested infrastructure.</div>
+        </div>
+        <div style="padding:1.2rem 1.3rem;background:var(--card);border:1px solid var(--rule);border-radius:14px;border-top:4px solid var(--terra);">
+          <div style="font-family:'Space Mono',monospace;font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:0.4rem;">Capital · Apr 25</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:var(--ink);line-height:1.3;margin-bottom:0.4rem;">Anthropic + Novartis</div>
+          <div style="font-size:0.86rem;color:var(--ink-dim);line-height:1.45;">Anthropic acquires Coefficient Bio ($400M, 10-person team). Vas Narasimhan (CEO Novartis) joins Anthropic's board. Pharma + frontier-lab alignment now board-level.</div>
+        </div>
+        <div style="padding:1.2rem 1.3rem;background:var(--terra);border:1px solid var(--terra-deep);border-radius:14px;border-top:4px solid var(--ink);color:#FFFDF5;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;color:#FFE9DE;margin-bottom:0.4rem;">Operational · May 4 (today, this room)</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.05rem;color:#FFFDF5;line-height:1.3;margin-bottom:0.4rem;">co-op.care, shipped</div>
+          <div style="font-size:0.86rem;color:rgba(255,253,245,0.9);line-height:1.45;">OAuth + atomic Medicare-cohort claim across the production stack in 90 minutes autonomous. 50-site cooperative network live. One physician of record. The architecture is shipping.</div>
+        </div>
+      </div>
+      <div class="meta-byline" style="margin-top:1.8rem;">Utah Medical Board's suspension of Doctronic on April 24 was the precedent. The federal dais this week was the policy.</div>
+    </div>
+  </section>
+
+  <!-- 2 · THE OPENING STAT -->
+  <section class="slide" data-idx="2">
+    <div class="slide-inner">
+      <div class="kicker">Boulder · today</div>
+      <h1 class="mega serif">15,000 <em>→</em> 30,000</h1>
+      <div class="deck-sub serif">Boulder residents over 65 today. By 2030, thirty thousand.</div>
+      <div class="meta-byline">You are one of them, you love one, or you are about to become one.</div>
+    </div>
+  </section>
+
+  <!-- 3 · THREE NUMBERS -->
+  <section class="slide" data-idx="3" data-bg="dim">
+    <div class="slide-inner">
+      <div class="kicker">What Boulder families pay today</div>
+      <div class="three-up">
+        <div class="stat"><span class="big-num">$55</span><div class="caption serif">per hour<br>out-of-pocket</div></div>
+        <div class="stat"><span class="big-num">$16</span><div class="caption serif">per hour<br>the caregiver takes home</div></div>
+        <div class="stat"><span class="big-num">77%</span><div class="caption serif">annual caregiver<br>turnover, nationwide</div></div>
+      </div>
+      <div class="meta-byline" style="margin-top:1rem;">PHI National 2024 · home-care industry baseline</div>
+      <div style="margin-top:clamp(1.5rem,3vh,2.4rem);padding:14px 22px;background:rgba(201,100,78,0.08);border-left:3px solid var(--terra);border-radius:0 10px 10px 0;display:inline-block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,1.4vw,1.12rem);color:var(--ink);max-width:720px;text-align:left;">
+        Hands up if your family has lived this. <span style="color:var(--ink-soft);font-style:normal;font-family:'Space Mono',monospace;font-size:0.7em;letter-spacing:0.14em;text-transform:uppercase;margin-left:8px;">·  audience prompt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · THE MATH -->
+  <section class="slide" data-idx="4" data-bg="dark">
+    <div class="slide-inner">
+      <h1 class="mega serif">The math doesn't work<br>for <em>anyone.</em></h1>
+      <div class="meta-byline" style="margin-top:3rem;">Not the family. Not the caregiver. Not the agency.<br>And not the mother.</div>
+    </div>
+  </section>
+
+  <!-- 5 · WHY WE EXIST -->
+  <section class="slide" data-idx="5" data-bg="terra">
+    <div class="slide-inner">
+      <div class="kicker">Why we exist</div>
+      <h2 class="big serif" style="color:#FFFDF5;max-width:1100px;margin:0 auto;">
+        So that the person who cares for your mother<br>
+        earns enough to <em style="color:#FFE9DE;">stay,</em><br>
+        is trusted enough to <em style="color:#FFE9DE;">decide,</em><br>
+        and owns enough to <em style="color:#FFE9DE;">never sell out.</em>
+      </h2>
+    </div>
+  </section>
+
+  <!-- 6 · THE REFRAME -->
+  <section class="slide" data-idx="6">
+    <div class="slide-inner">
+      <div class="kicker">The reframe</div>
+      <h1 class="mega serif">Not an agency.<br>Not an app.<br>A <em>care grid.</em></h1>
+      <div class="deck-sub serif" style="max-width:820px;">Infrastructure the way we plug into water, electric, internet. Anyone can plug in. Every neighborhood needs one.</div>
+    </div>
+  </section>
+
+  <!-- 7 · TEN SKILLS -->
+  <section class="slide" data-idx="7">
+    <div class="slide-inner">
+      <div class="kicker">What a "talent" looks like</div>
+      <h2 class="big serif" style="margin-bottom:0.8rem;font-size:clamp(1.8rem,3.4vw,2.8rem);">Ten <em>skill categories.</em> Every neighbor has one.</h2>
+
+      <div class="skills">
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="food"><span class="n">01</span><h4 class="serif">Food</h4><p>Meals · groceries · Sunday dinner</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="transport"><span class="n">02</span><h4 class="serif">Transport</h4><p>Rides · errands · appointments</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="hands-on"><span class="n">03</span><h4 class="serif">Hands-on care</h4><p>Bathing · dressing · transfers</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="movement"><span class="n">04</span><h4 class="serif">Movement</h4><p>Walking buddy · PT support</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="housekeeping"><span class="n">05</span><h4 class="serif">Housekeeping</h4><p>Cleaning · laundry · repairs</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile hero tap-vote" data-vote-slide="7" data-vote-option="smart-home"><span class="n">06 · teens</span><h4 class="serif">Smart home</h4><p>FaceTime · Nest · tablets</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="companion"><span class="n">07</span><h4 class="serif">Companionship</h4><p>Sitting · listening · reading</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="clinical"><span class="n">08</span><h4 class="serif">Clinical</h4><p>RN · OT · PT · CNA · MSW</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="admin"><span class="n">09</span><h4 class="serif">Administration</h4><p>Insurance · bills · scheduling</p><span class="vote-count" data-count></span></div>
+        <div class="skill-tile tap-vote" data-vote-slide="7" data-vote-option="witness"><span class="n">10</span><h4 class="serif">Witness</h4><p>Directive signings · hard talks</p><span class="vote-count" data-count></span></div>
+      </div>
+      <div class="meta-byline" style="margin-top:0.6rem;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);">Tap the one you'd offer · vote stays anonymous</div>
+      <div style="margin-top:clamp(1.4rem,3vh,2.2rem);padding:13px 20px;background:rgba(201,100,78,0.08);border-left:3px solid var(--terra);border-radius:0 10px 10px 0;display:inline-block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.92rem,1.35vw,1.08rem);color:var(--ink-dim);max-width:760px;text-align:left;">
+        Look at this list. Find yours. <span style="color:var(--ink-soft);font-style:normal;font-family:'Space Mono',monospace;font-size:0.7em;letter-spacing:0.14em;text-transform:uppercase;margin-left:8px;">·  reflect 30 seconds</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · HIGH SCHOOL PROGRAM -->
+  <section class="slide" data-idx="8" data-bg="blue">
+    <div class="slide-inner">
+      <div class="kicker">The generational bridge</div>
+      <h2 class="big serif" style="font-size:clamp(1.8rem,3.8vw,3rem);">Smart Home Badge. <em>Boulder teens to Boulder elders.</em></h2>
+      <div class="deck-sub serif" style="max-width:780px;color:var(--ink-dim);font-style:italic;">Fairview. Boulder. Centaurus. Monarch. Thousands of tech-fluent teenagers — and hundreds of elders who need one.</div>
+
+      <div class="teens-grid">
+        <div class="teen-earn"><h3 class="serif">Service hours</h3><p>Required for college apps, NHS, scholarships.</p></div>
+        <div class="teen-earn"><h3 class="serif">Care tokens</h3><p>Transferable to your own grandmother's care — any state.</p></div>
+        <div class="teen-earn"><h3 class="serif">Cash</h3><p>Paid gigs at $18/hr. Below clinical rate. Real money.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · TWO ENTRY POINTS -->
+  <section class="slide" data-idx="9">
+    <div class="slide-inner">
+      <div class="kicker">How people get on the grid</div>
+      <h2 class="big serif" style="font-size:clamp(1.8rem,3.6vw,2.8rem);">Two entry points. <em>One grid.</em></h2>
+
+      <div class="entries2">
+        <div class="entry-card tap-vote" data-vote-slide="9" data-vote-option="clinical">
+          <div class="tag">01 · Clinical</div>
+          <h3 class="serif">BCH discharge QR</h3>
+          <p>Every patient leaves Boulder Community Health with a QR code. 60-second intake. Thousands of patients routed into the grid per year. One partnership conversation.</p>
+          <span class="vote-count" data-count></span>
+        </div>
+        <div class="entry-card blue tap-vote" data-vote-slide="9" data-vote-option="community">
+          <div class="tag">02 · Community</div>
+          <h3 class="serif">Nextdoor share button</h3>
+          <p>Every Nextdoor thread ending "…can anyone help?" routes into the Exchange. Hyperlocal already. We just give it rails.</p>
+          <span class="vote-count" data-count></span>
+        </div>
+      </div>
+      <div class="meta-byline" style="margin-top:1rem;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);">Which entry would your family use? Tap to vote</div>
+    </div>
+  </section>
+
+  <!-- 9.5 · HIDDEN -->
+  <section class="slide-hidden" data-idx="9.5" style="display:none">
+    <div class="slide-inner">
+      <div class="kicker">Week 1 of membership</div>
+      <h2 class="big serif" style="font-size:clamp(1.8rem,3.6vw,2.8rem);">A home assessment. <em>Then the LMNs.</em></h2>
+      <div class="deck-sub serif" style="max-width:880px;font-size:clamp(1rem,1.5vw,1.18rem);margin-bottom:clamp(1.4rem,3vh,2.2rem);">A neighbor — PT, OT, CNA, or RN — walks your home in the first week. Every flagged improvement runs through our LMN flow. Physician-attested. §213(d)-compliant. Pre-tax dollars unlock 22–37% off — depending on your bracket.</div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(0.8rem,1.4vw,1.2rem);max-width:1080px;margin:0 auto;">
+
+        <div style="padding:1rem 1.1rem;background:rgba(252,228,189,0.45);border:1px solid rgba(201,100,78,0.18);border-radius:10px;text-align:left;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Mobility</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3;color:var(--ink);">Stair lift, walk-in shower, grab bars, wheelchair ramp, lever doorknobs, wider doorways</div>
+          <div style="margin-top:6px;font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--terra);">stair lift · $3,500 → $2,400 effective</div>
+        </div>
+
+        <div style="padding:1rem 1.1rem;background:rgba(252,228,189,0.45);border:1px solid rgba(201,100,78,0.18);border-radius:10px;text-align:left;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Fall prevention</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3;color:var(--ink);">Pathway lighting, non-slip flooring, both-side handrails, toilet risers, fall sensors, bed rails</div>
+          <div style="margin-top:6px;font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--terra);">bathroom retrofit · $1,200 → $840</div>
+        </div>
+
+        <div style="padding:1rem 1.1rem;background:rgba(252,228,189,0.45);border:1px solid rgba(201,100,78,0.18);border-radius:10px;text-align:left;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Dementia safety</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3;color:var(--ink);">Stove auto-shutoff, door alarms, locator devices, smart locks, pill dispensers, memory aids</div>
+          <div style="margin-top:6px;font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--terra);">CookStop + locator · $600 → $420</div>
+        </div>
+
+        <div style="padding:1rem 1.1rem;background:rgba(252,228,189,0.45);border:1px solid rgba(201,100,78,0.18);border-radius:10px;text-align:left;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Sensory</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3;color:var(--ink);">Better lighting (cataracts), hearing loops, closed-caption TV, visual smoke alarms, strobe doorbells</div>
+          <div style="margin-top:6px;font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--terra);">lighting overhaul · $2,000 → $1,400</div>
+        </div>
+
+        <div style="padding:1rem 1.1rem;background:rgba(252,228,189,0.45);border:1px solid rgba(201,100,78,0.18);border-radius:10px;text-align:left;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Sleep &amp; respiratory</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3;color:var(--ink);">Adjustable bed, CGM, HEPA air purifier, humidifier, sleep tracker, blackout curtains</div>
+          <div style="margin-top:6px;font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--terra);">adjustable bed · $2,800 → $1,960</div>
+        </div>
+
+        <div style="padding:1rem 1.1rem;background:rgba(252,228,189,0.45);border:1px solid rgba(201,100,78,0.18);border-radius:10px;text-align:left;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;">Connection tech</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;line-height:1.3;color:var(--ink);">Telehealth tablet, easy-button phone, video doorbell, family-call hardware, fall pendant</div>
+          <div style="margin-top:6px;font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--terra);">teen installs all of it · slide 8</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:clamp(1.4rem,3vh,2rem);padding:14px 22px;background:rgba(201,100,78,0.08);border-left:3px solid var(--terra);border-radius:0 10px 10px 0;display:inline-block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.95rem,1.4vw,1.12rem);color:var(--ink);max-width:880px;text-align:left;line-height:1.5;">
+        The same neighbor who assesses your home coordinates the contractor referral. The same LMN from Josh covers the installer and the ongoing caregiver. HSA or FSA pays for both. <strong style="font-style:normal;color:var(--terra);">A typical first-year retrofit: $8,000–$15,000 in contractor work, $2,400–$4,500 saved pre-tax — plus annual care costs covered.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · THE BOULDER STORY -->
+  <section class="slide" data-idx="10">
+    <div class="slide-inner">
+      <div class="story-block">
+        <span class="story-tag">Last Saturday · Boulder, CO</span>
+        <p>Jess moved her father into the house next door.</p>
+        <p>He has mild dementia.</p>
+        <p>They signed his advance directive at the kitchen table.</p>
+        <p><strong>Josh reviewed the recording, from Boulder.</strong></p>
+        <p>It took 43 minutes.</p>
+        <p>Then they had pancakes.</p>
+        <div class="story-closer">Nobody had to call a lawyer at 2 AM. Nobody had to drive to Denver. The caregiver coming on Thursday already works for the cooperative her father now belongs to.</div>
+        <div style="margin-top:clamp(1.4rem,3vh,2.2rem);padding:13px 20px;background:rgba(201,100,78,0.08);border-left:3px solid var(--terra);border-radius:0 10px 10px 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(0.92rem,1.35vw,1.08rem);color:var(--ink-dim);text-align:left;">
+          Turn to the person next to you. Tell them about the closest version of this in <em>your</em> family. <span style="color:var(--ink-soft);font-style:normal;font-family:'Space Mono',monospace;font-size:0.7em;letter-spacing:0.14em;text-transform:uppercase;margin-left:8px;">·  small group · 90 sec</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · WHERE WOULD YOU PLUG IN? (reflective, not a pitch — per BSW rules) -->
+  <section class="slide" data-idx="11" data-bg="dim">
+    <div class="slide-inner">
+      <div class="kicker">Hold one in mind</div>
+      <h2 class="big serif" style="font-size:clamp(1.8rem,3.6vw,2.8rem);">Where would <em>you</em> plug in?</h2>
+      <div class="deck-sub serif" style="max-width:760px;font-size:clamp(1rem,1.5vw,1.2rem);margin-bottom:clamp(1.4rem,3vh,2.4rem);">Six ways neighbors are already showing up. We're not asking you to choose now — just hold one in mind. Q&amp;A in three minutes.</div>
+
+      <div class="roles">
+        <div class="role-row tap-vote" data-vote-slide="11" data-vote-option="customer">
+          <div class="n serif">01</div>
+          <div class="who">Care for someone you love<span class="sub">Aging at home instead of a facility</span></div>
+          <span class="vote-count" data-count></span>
+        </div>
+        <div class="role-row tap-vote" data-vote-slide="11" data-vote-option="caregiver">
+          <div class="n serif">02</div>
+          <div class="who">Be the caregiver<span class="sub">$26/hr W-2 · real equity · patron-member</span></div>
+          <span class="vote-count" data-count></span>
+        </div>
+        <div class="role-row tap-vote" data-vote-slide="11" data-vote-option="teen">
+          <div class="n serif">03</div>
+          <div class="who">Help an elder with smart-home tech<span class="sub">Boulder teen → Boulder elder · service hours + tokens + cash</span></div>
+          <span class="vote-count" data-count></span>
+        </div>
+        <div class="role-row tap-vote" data-vote-slide="11" data-vote-option="talent">
+          <div class="n serif">04</div>
+          <div class="who">Offer one of the ten skills<span class="sub">Food · transport · housekeeping · companionship · more</span></div>
+          <span class="vote-count" data-count></span>
+        </div>
+        <div class="role-row tap-vote" data-vote-slide="11" data-vote-option="comfortcard">
+          <div class="n serif">05</div>
+          <div class="who">Get a ComfortCard<span class="sub">$19/mo · Apple Wallet · same card families and neighbors carry · comfortcard.org</span></div>
+          <span class="vote-count" data-count></span>
+        </div>
+        <div class="role-row tap-vote" data-vote-slide="11" data-vote-option="contribute">
+          <div class="n serif">06</div>
+          <div class="who">Trade 10 hours for free membership<span class="sub">Childcare · errands · a ride · an hour of company · we keep the receipts</span></div>
+          <span class="vote-count" data-count></span>
+        </div>
+        <div class="role-row tap-vote" data-vote-slide="11" data-vote-option="organizer">
+          <div class="n serif">07</div>
+          <div class="who">Bring this to your corner of Boulder<span class="sub">Refer a family · intro a hospital · host a kitchen-table conversation</span></div>
+          <span class="vote-count" data-count></span>
+        </div>
+      </div>
+
+      <div class="meta-byline" style="margin-top:1.6rem;">
+        Tap the one that's yours. Anonymous · we'll show the live tally after Q&amp;A. <strong style="color:var(--terra);">Same card on both sides — same membership, same identity. We can all belong if we have something to offer.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11.5 · HIDDEN -->
+  <section class="slide-hidden" data-bg="terra" style="display:none">
+    <div class="slide-inner" style="text-align:center;">
+      <div class="kicker" style="color:#FFE9DE;">The call</div>
+      <h1 class="mega serif" style="color:#FFFDF5;font-size:clamp(2.4rem,5.5vw,4rem);max-width:18ch;margin:0 auto 1rem;">Contribute 10.<br><em style="color:#FFE9DE;">Get the future you want.</em></h1>
+      <div class="deck-sub serif" style="color:rgba(255,253,245,0.82);max-width:30em;margin:1.6rem auto;font-size:clamp(1rem,1.7vw,1.25rem);">10 hours of mutual aid a year covers your ComfortCard membership for the year, free. <strong style="color:#FFFDF5;font-style:normal;">And you own a share</strong> of the cooperative — vote, dividend, governance. Not a subscription. Not a club. New infrastructure for the people you love, owned by the people who built it.</div>
+      <div style="margin-top:2rem;font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.06em;color:#FFE9DE;">co-op.care/contribute &nbsp;·&nbsp; co-op.care/manifesto</div>
+    </div>
+  </section>
+
+  <!-- 12 · CLOSING — QR → free ComfortCard membership -->
+  <section class="slide" data-bg="dark">
+    <div class="slide-inner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.8rem;">
+      <p class="big serif" style="font-size:clamp(1.1rem,2vw,1.6rem);max-width:640px;color:rgba(255,253,245,0.82);font-style:italic;line-height:1.4;margin:0;">"We can all belong<br>if we have something to offer."</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fcomfortcard.org&bgcolor=FFFDF5&color=0F1B33&margin=8"
+           alt="comfortcard.org" width="220" height="220" style="border-radius:14px;">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.4vw,1.9rem);color:#FFFDF5;letter-spacing:-0.01em;">Free membership · comfortcard.org</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,253,245,0.42);margin-top:8px;">co-op.care · Boulder · scan now</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<nav class="deck-nav" id="deck-nav" aria-label="Slide navigation">
+  <button type="button" class="nav-btn" id="nav-prev" aria-label="Previous slide">←&nbsp;Back</button>
+  <span class="nav-counter" id="nav-counter">01 / 12</span>
+  <button type="button" class="nav-btn" id="nav-voice" aria-label="Play voice-over for this slide" title="Play voice-over (browser TTS)">▶&nbsp;Voice</button>
+  <button type="button" class="nav-btn" id="nav-next" aria-label="Next slide">Next&nbsp;→</button>
+</nav>
+<div class="hint"><kbd>←</kbd> <kbd>→</kbd> to navigate &nbsp;·&nbsp; <kbd>F</kbd> fullscreen &nbsp;·&nbsp; <kbd>T</kbd> toggle tally &nbsp;·&nbsp; <kbd>V</kbd> voice-over</div>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const counter = document.getElementById('nav-counter');
+  const prevBtn = document.getElementById('nav-prev');
+  const nextBtn = document.getElementById('nav-next');
+  let idx = 0;
+  let tallyVisible = false;
+
+  function show(i) {
+    idx = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, n) => s.classList.toggle('active', n === idx));
+    const total = String(slides.length).padStart(2, '0');
+    const cur = String(idx + 1).padStart(2, '0');
+    if (counter) counter.textContent = cur + ' / ' + total;
+    if (prevBtn) prevBtn.disabled = idx === 0;
+    if (nextBtn) nextBtn.disabled = idx === slides.length - 1;
+    const bg = slides[idx].getAttribute('data-bg');
+    document.body.classList.toggle('dark-chrome', bg === 'dark' || bg === 'terra');
+    history.replaceState(null, '', '#' + (idx + 1));
+    if (tallyVisible) refreshTally();
+  }
+  function next() { show(idx + 1); }
+  function prev() { show(idx - 1); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { next(); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') { prev(); e.preventDefault(); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+    else if (e.key === 't' || e.key === 'T') {
+      tallyVisible = !tallyVisible;
+      if (tallyVisible) refreshTally(); else hideTally();
+    }
+    else if (/^[0-9]$/.test(e.key)) {
+      const n = e.key === '0' ? 9 : parseInt(e.key, 10) - 1;
+      show(n);
+    }
+  });
+
+  // Click anywhere advances — but skip interactive controls AND vote tiles AND nav controls.
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a, button, input, textarea, summary, details, .tap-vote, .deck-nav')) return;
+    next();
+  });
+
+  // Mobile-friendly nav buttons
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+
+  let touchX = null;
+  document.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (dx > 50) prev(); else if (dx < -50) next();
+    touchX = null;
+  });
+
+  const hash = parseInt(location.hash.replace('#', ''), 10);
+  if (!isNaN(hash) && hash >= 1 && hash <= slides.length) show(hash - 1);
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // VOTING — every .tap-vote tile POSTs an anonymous vote to solvinghealth.com/api/signup
+  // (which lands in Supabase email_captures). Each visitor gets a stable UUID
+  // in localStorage so they can vote once per option per slide; clicking again
+  // un-votes (toggle UX).
+  // ═══════════════════════════════════════════════════════════════════════
+  const SIGNUP_ENDPOINT = 'https://solvinghealth.com/api/signup';
+  const SUPA_REST = 'https://uhizqukdctkvluluheux.supabase.co/rest/v1/email_captures';
+  const SUPA_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVoaXpxdWtkY3Rrdmx1bHVoZXV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NzQ1ODQsImV4cCI6MjA4OTQ1MDU4NH0._AxT5pBEi1GZ167JPJpHeg_k1E0Bbtzyj3UPKdTFEug';
+  const VOTER_KEY = 'why_voter_uuid';
+
+  function voterId() {
+    try {
+      let id = localStorage.getItem(VOTER_KEY);
+      if (!id) {
+        id = 'v-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+        localStorage.setItem(VOTER_KEY, id);
+      }
+      return id;
+    } catch (_) {
+      return 'v-' + Math.random().toString(36).slice(2, 10);
+    }
+  }
+
+  function attribution() {
+    const out = {};
+    try {
+      const p = new URLSearchParams(window.location.search);
+      ['utm_source','utm_medium','utm_campaign','event','ref'].forEach(k => {
+        const v = p.get(k);
+        if (v) out[k] = v.slice(0, 100);
+      });
+    } catch (_) {}
+    return out;
+  }
+
+  function localVotedKey(slide, option) { return 'why_voted_' + slide + '_' + option; }
+  function alreadyVoted(slide, option) {
+    try { return !!localStorage.getItem(localVotedKey(slide, option)); } catch (_) { return false; }
+  }
+  function markVotedLocal(slide, option, on) {
+    try {
+      if (on) localStorage.setItem(localVotedKey(slide, option), '1');
+      else localStorage.removeItem(localVotedKey(slide, option));
+    } catch (_) {}
+  }
+
+  async function castVote(slide, option) {
+    const uuid = voterId();
+    const synthEmail = 'vote-' + uuid + '-s' + slide + '-' + option + '@bsw2026.coop.care';
+    const payload = Object.assign({
+      email: synthEmail,
+      source: 'why_vote_slide_' + slide,
+      brand: 'co-op.care',
+      intent: 'why_deck_vote',
+      notes: 'Slide ' + slide + ' · option=' + option + ' · voter=' + uuid
+    }, attribution());
+    try {
+      await fetch(SIGNUP_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (_) { /* swallow — vote is best-effort */ }
+  }
+
+  document.querySelectorAll('.tap-vote').forEach((tile) => {
+    const slide = tile.getAttribute('data-vote-slide');
+    const option = tile.getAttribute('data-vote-option');
+    if (!slide || !option) return;
+    if (alreadyVoted(slide, option)) tile.classList.add('voted');
+    tile.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasVoted = tile.classList.contains('voted');
+      if (wasVoted) {
+        // Allow visual un-vote locally (we don't actually delete from DB — keeps audit clean,
+        // but un-marking lets a user pick a different option without confusion).
+        tile.classList.remove('voted');
+        markVotedLocal(slide, option, false);
+        return;
+      }
+      tile.classList.add('voted');
+      markVotedLocal(slide, option, true);
+      castVote(slide, option);
+      // Refresh tally if visible (deferred so the new vote shows up after persist)
+      if (tallyVisible) setTimeout(refreshTally, 1500);
+    });
+  });
+
+  // ── Slide 13 thumbs-up / thumbs-down rating handlers ────────────────────
+  document.querySelectorAll('.rate-card').forEach((card) => {
+    const slide = card.getAttribute('data-rate-slide');
+    if (!slide) return;
+    card.querySelectorAll('.rate-btn').forEach((btn) => {
+      const direction = btn.getAttribute('data-rate-vote'); // "up" | "down"
+      const ratedKey = 'why_rated_' + slide + '_' + direction;
+      try { if (localStorage.getItem(ratedKey)) btn.classList.add('active'); } catch (_) {}
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const wasActive = btn.classList.contains('active');
+        // Toggle the OPPOSITE button off if active (only one direction per slide)
+        const opposite = direction === 'up' ? 'down' : 'up';
+        const oppBtn = card.querySelector('.rate-btn.' + opposite);
+        if (oppBtn) {
+          oppBtn.classList.remove('active');
+          try { localStorage.removeItem('why_rated_' + slide + '_' + opposite); } catch (_) {}
+        }
+        if (wasActive) {
+          btn.classList.remove('active');
+          try { localStorage.removeItem(ratedKey); } catch (_) {}
+          return;
+        }
+        btn.classList.add('active');
+        try { localStorage.setItem(ratedKey, '1'); } catch (_) {}
+        // Persist as a vote: source=why_rate_slide_X, option=up|down
+        castVote('rate_' + slide, direction);
+      });
+    });
+  });
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // TALLY — fetches counts from Supabase REST and renders inline on .vote-count spans.
+  // Toggleable with the "T" key. Refreshes on slide change while visible.
+  // ═══════════════════════════════════════════════════════════════════════
+  async function refreshTally() {
+    try {
+      const slide = idx + 1;
+      const tiles = document.querySelectorAll('.tap-vote[data-vote-slide="' + slide + '"]');
+      if (!tiles.length) return;
+      // Pull all rows for this slide; count by option client-side. Anonymous-only fields.
+      const url = SUPA_REST
+        + '?source=eq.why_vote_slide_' + slide
+        + '&select=notes&limit=2000';
+      const r = await fetch(url, {
+        headers: { apikey: SUPA_ANON, Authorization: 'Bearer ' + SUPA_ANON }
+      });
+      if (!r.ok) return;
+      const rows = await r.json();
+      const counts = {};
+      rows.forEach((row) => {
+        const m = (row.notes || '').match(/option=([a-z0-9_-]+)/i);
+        if (m) counts[m[1]] = (counts[m[1]] || 0) + 1;
+      });
+      const total = Object.values(counts).reduce((a, b) => a + b, 0);
+      tiles.forEach((t) => {
+        const opt = t.getAttribute('data-vote-option');
+        const span = t.querySelector('[data-count]');
+        if (!span) return;
+        const c = counts[opt] || 0;
+        if (total > 0) {
+          span.textContent = c + (total > 1 ? ' · ' + Math.round(c / total * 100) + '%' : '');
+          span.classList.add('show');
+        } else {
+          span.classList.remove('show');
+        }
+      });
+    } catch (_) { /* ignore */ }
+  }
+  function hideTally() {
+    document.querySelectorAll('.tap-vote .vote-count').forEach((el) => el.classList.remove('show'));
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // VOICE-OVER — 50-MINUTE 4-VOICE PANEL (Blaine + Josh + Jess + Kristin) + Q&A
+  // ═══════════════════════════════════════════════════════════════════════
+  // Replaces the simple per-slide narration with a multi-voice panel discussion.
+  // Speaker tags: "Blaine" / "Josh" / "Kristin" / "Audience". The player picks a
+  // distinct Web Speech voice per speaker and queues segments in sequence.
+  //
+  // Runtime budget: ~50 min total at rate 0.95 (~140 wpm). 12 talk slides × ~3min
+  // + slide 13 transition + 10-min Q&A simulation on slide 13.
+  //
+  // FLOOR vs CEILING: Web Speech is the floor — works offline, zero cost, runs at
+  // the venue without WiFi. CEILING is Gemini TTS or ElevenLabs MP3s; if Blaine
+  // generates them later, swap each segment's `text` for `audioUrl` and the same
+  // queue logic plays MP3s instead of synthesized speech.
+  // ═══════════════════════════════════════════════════════════════════════
+  const PANEL = [
+    // ─── SLIDE 1 — Title ───────────────────────────────────────────────────
+    [
+      { speaker: 'Josh', text: "I'm Josh Emdur — hospitalist at Boulder Community Health, fifty-state licensed. I see your parents on the worst day of their year. I'm here to keep us honest about what the data actually supports." },
+      { speaker: 'Blaine', text: "I'm Blaine Warkentine. Two decades in orthopedic technology and health systems. I have a stake in this conversation. Josh will flag the gaps." },
+      { speaker: 'Jess', text: "I'm Jess Dion. My father has mild dementia. I manage his doctors, pharmacy, insurance, and whoever shows up each week — while working full time. I'm here because if something like this existed, my life would look different." },
+      { speaker: 'Kristin', text: "I'm Kristin Apple. Twenty years in consumer health research. Not affiliated with co-op.care. My job is to tell you what the evidence supports — and where the open questions are." }
+    ],
+    // ─── SLIDE 2 — 15,000 → 30,000 ────────────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Two numbers. Fifteen thousand Boulder residents are over sixty-five today. By 2030, that doubles to thirty thousand. The demand doubles. The system is already failing." },
+      { speaker: 'Kristin', text: "Eighty percent of healthcare decisions are driven by family members — mostly women. People don't want to go to the system. They want the system to come to them." },
+      { speaker: 'Josh', text: "We need six-point-one million additional home-care workers in the next ten years. The pipeline produces almost nothing of that. This is a structural shortage, not a temporary one." }
+    ],
+    // ─── SLIDE 3 — $55 / $16 / 77% ───────────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Three numbers. Families pay fifty-five dollars an hour. The caregiver takes home sixteen. Seventy-seven percent quit every year. PHI National, twenty-twenty-four." },
+      { speaker: 'Kristin', text: "Real take-home after tax and expenses is closer to eleven dollars an hour — for work that keeps your parent alive and at home." },
+      { speaker: 'Josh', text: "Seventy-seven percent turnover means a new caregiver every six weeks. The new person doesn't know the medications. Something gets missed. That one ER visit costs more than three months of stable home care." },
+      { speaker: 'Blaine', text: "Care.com sold at a hundred-and-eighty-million-dollar loss this March. Not bad execution — wrong structure. The question is: what structure works?" }
+    ],
+    // ─── SLIDE 4 — The math doesn't work ────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Fifty-five dollars an hour times forty hours a week is eighty-eight hundred dollars a month. More than most mortgages. It doesn't work for the family, the caregiver, or the agency." },
+      { speaker: 'Josh', text: "Patient goes home Friday. Agency starts Tuesday. Four days alone with a fall risk and a new medication protocol. Not a failure of people — a structural failure." },
+      { speaker: 'Jess', text: "Three different caregivers in one week. Dad had to tell his story three times. By the end he stopped letting them in. Being known had become too expensive." },
+      { speaker: 'Blaine', text: "Changing who runs it doesn't fix that. Changing who owns it might." }
+    ],
+    // ─── SLIDE 5 — Stay · Decide · Own ──────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Three words. Stay. Decide. Own. Each is a structural failure in the current system. Each has a structural fix." },
+      { speaker: 'Jess', text: "Stay means the same person comes Tuesday morning for the next two years. She knows his coffee order, where the spare key is. That boring miracle is the actual product." },
+      { speaker: 'Josh', text: "Decide means the caregiver has a real clinical pathway. She logs what she noticed. I review it in five minutes and respond same day." },
+      { speaker: 'Blaine', text: "Own. CHCA in New York — forty years old, twenty-five hundred worker-owners. Fourteen percent turnover. Industry baseline: seventy-seven. Same job, different ownership." }
+    ],
+    // ─── SLIDE 6 — Care grid ─────────────────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Not an agency. Not an app. Infrastructure. You don't comparison-shop water. Boulder has water, electric, internet. Boulder doesn't have a care grid yet." },
+      { speaker: 'Kristin', text: "The adult daughter is the API between the cardiologist, pharmacy, caregiver, and insurance company. The promise: stop making the daughter the API. Let the daughter be the daughter." },
+      { speaker: 'Josh', text: "I synthesize everything into a discharge plan. Then the patient goes home and that integration layer disappears. What they go home to is whoever picks up the phone." },
+      { speaker: 'Blaine', text: "The test: does it disappear? Good infrastructure is invisible. The goal is that someone asks how your mom is doing and you say: she's fine. Without having to add 'considering.'" }
+    ],
+    // ─── SLIDE 7 — Ten skill categories ─────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Ten categories: food, transport, personal care, movement, housekeeping, smart home, companionship, clinical, administration — and Witness. Take thirty seconds. Pick the one you'd offer." },
+      { speaker: 'Josh', text: "Nine of the ten don't require a clinical license. Most care isn't clinical. Most help is showing up." },
+      { speaker: 'Kristin', text: "Witness: a trained neighbor present for the advance directive conversation. The do-I-stop-driving talk. We're paying people for that skill — because it's real, and right now it happens informally or not at all." },
+      { speaker: 'Blaine', text: "The demand is in this room. The supply is in this room. We're just missing the rails." }
+    ],
+    // ─── SLIDE 8 — Smart Home Badge ──────────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Six thousand Boulder high school students who set up devices without instructions. Hundreds of elders whose tablets still show the wrong time. We're running that bridge as paid work." },
+      { speaker: 'Josh', text: "Smart-home connectivity is a clinical intervention. It closes the loop on medication questions before they become falls. We just don't have a billing code for it yet." },
+      { speaker: 'Kristin', text: "Three currencies: NHS service hours, care tokens transferable to your own family, and eighteen dollars an hour cash. The labor is real. The relationship to the elder is real." }
+    ],
+    // ─── SLIDE 9 — Two entry points ──────────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Two doors. Door one: BCH discharge. Nine thousand patients a year go home with a paper packet. We add one page, one QR code, sixty-second intake." },
+      { speaker: 'Josh', text: "The QR code is a clinical safety device — it captures who's going home to what. It also happens to be a market entry mechanism. Both things are true." },
+      { speaker: 'Josh', text: "Physician access inside this model: I'm fifty-state licensed. Direct Primary Care, flat monthly fee. Letters of Medical Necessity that unlock HSA and FSA — for the home care worker and for the contractor who installs grab bars and ramps. One letter, one attestation, covers both." },
+      { speaker: 'Blaine', text: "Typical retrofit: eight to fifteen thousand dollars. That LMN saves two to five thousand in after-tax dollars on day one — plus ongoing care costs covered pre-tax every month after." },
+      { speaker: 'Kristin', text: "Door two: the Nextdoor thread. We convert that ask into a structured care request and match it to grid members within a mile. The neighborly impulse already exists. We're giving it infrastructure." },
+      { speaker: 'Blaine', text: "Poll: which door would your family walk through first? BCH or Nextdoor. Either way, same grid, same physician, same matching." }
+    ],
+    // ─── SLIDE 10 — The Boulder story ────────────────────────────────────
+    [
+      { speaker: 'Josh', text: "Jess, let's use your real situation. Walk us through what the advance directive process has actually been like." },
+      { speaker: 'Jess', text: "We haven't done it. Eight months. The friction is higher than the urgency — until suddenly it isn't." },
+      { speaker: 'Josh', text: "That's the pattern from my service. They don't do it. Then the patient arrives in the ER at two in the morning. CareGoals is a voice-first conversation — not a form. It earns the hard answers slowly, on your dad's couch, on his schedule." },
+      { speaker: 'Jess', text: "He's not a forms guy. But if you asked him to talk about his own father, he'd go for an hour." },
+      { speaker: 'Josh', text: "He records a video at home. I review asynchronously. A neighbor from the grid is the documentary witness. The whole process closes in under forty-eight hours." },
+      { speaker: 'Kristin', text: "The barrier to advance directives is almost never awareness. It's friction. The grid collapses the friction without collapsing the conversation." }
+    ],
+    // ─── SLIDE 11 — Where would you plug in? ─────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Seven ways to plug in. Not a sign-up — don't commit right now. Read them. Pick the one that stops you. Hold it for forty-eight hours." },
+      { speaker: 'Kristin', text: "The most predictive variable in consumer health is belonging. This slide is asking: where are you in your life right now? There's no wrong answer." },
+      { speaker: 'Josh', text: "We're not in a rush. We'd rather you hold one thing and talk to one person about it than sign up in thirty seconds and forget in forty-eight hours." },
+      { speaker: 'Blaine', text: "What I care about more than sign-ups is the conversation you have when you leave this room — with your parent, your sibling, your neighbor." }
+    ],
+    // ─── SLIDE 12 — Closing QR ───────────────────────────────────────────
+    [
+      { speaker: 'Blaine', text: "Open mic. Ask anything. Tell us what we got wrong." },
+      { speaker: 'Audience', text: "Why are you different from Care.com, Honor, Papa?" },
+      { speaker: 'Blaine', text: "Different structure. They're venture-backed marketplaces — the equity is in San Francisco. We're a worker-owned cooperative by statute. The caregivers are the equity. CHCA has proven this for forty years." },
+      { speaker: 'Audience', text: "What if Medicare changes the rules?" },
+      { speaker: 'Josh', text: "Section 213-d is thirty years older than Medicare Advantage. Family-direct pay is the majority of home care revenue. Better rules are gravy." },
+      { speaker: 'Audience', text: "I'm a caregiver now. What would switching mean?" },
+      { speaker: 'Blaine', text: "Twenty-six dollars an hour, W-2, schedule control, and a capital account that vests with every shift. We can talk after." },
+      { speaker: 'Audience', text: "Are you replacing caregivers with AI?" },
+      { speaker: 'Josh', text: "Opposite. AI replaces the thirty-nine-dollar agency overhead. The human in the room is irreplaceable. Human presence is what prevents cognitive decline." },
+      { speaker: 'Audience', text: "Am I actually an owner or is that marketing?" },
+      { speaker: 'Blaine', text: "Colorado statute. Patron members hold majority voting control by law — not by promise, not by charter language that can be amended later. It can't be negotiated away." },
+      { speaker: 'Kristin', text: "We can all belong if we have something to offer. That's the whole talk in one sentence. Thank you, Boulder." }
+    ]
+  ];
+
+  // Backwards-compat: expose first segment of each slide as a flat NARRATIONS
+  // array (some external consumers expect that shape).
+  const NARRATIONS = PANEL.map((segs) => segs.map((s) => s.text).join(' '));
+
+  const synth = (typeof window !== 'undefined' && 'speechSynthesis' in window) ? window.speechSynthesis : null;
+  let currentUtterance = null;
+  let voiceCache = [];
+  function loadVoices() {
+    if (!synth) return [];
+    voiceCache = synth.getVoices() || [];
+    return voiceCache;
+  }
+  if (synth) {
+    loadVoices();
+    if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = loadVoices;
+  }
+  // ─── VOICE PER SPEAKER (multi-voice panel: Blaine + Josh + Kristin + Audience) ───
+  // Quality-tiered picker: prefers neural/premium/enhanced voices over default macOS
+  // voices, which sound dramatically better. Tier order (highest to lowest):
+  //   Tier A — Edge neural ("Online (Natural)"), Microsoft Online neural
+  //   Tier B — Apple Premium / Enhanced (downloaded via System Settings → Accessibility)
+  //   Tier C — Google server voices (Chrome only — "Google US English", etc.)
+  //   Tier D — Standard macOS voices (Samantha, Daniel, Alex, Karen, etc.)
+  //   Tier E — Compact / novelty voices (filtered out)
+  // To upgrade Tier B locally: System Settings → Accessibility → Spoken Content →
+  // System Voice → click each premium voice (Samantha, Daniel, Karen) → download.
+  // RATE GUIDE: 0.80 = deliberate/Ted-talk pace  0.90 = normal conversation  1.0 = native speed
+  const SPEAKER_VOICE_PREFS = {
+    Blaine:   { rate: 0.84, pitch: 0.93, gender: 'male'   }, // measured business voice, deliberate
+    Josh:     { rate: 0.87, pitch: 1.02, gender: 'male'   }, // clinical authority, slightly warmer pitch
+    Kristin:  { rate: 0.88, pitch: 1.05, gender: 'female' }, // thoughtful researcher
+    Jess:     { rate: 0.82, pitch: 1.00, gender: 'female' }, // warm, personal, unhurried
+    Audience: { rate: 0.90, pitch: 0.98, gender: 'either' }  // slightly quicker — short questions
+  };
+  // UPGRADE PATH: For real voice actors swap text→audioUrl in each PANEL segment.
+  // Best free option: run in Microsoft Edge (neural voices rated dramatically above Chrome/Safari).
+  // Edge neural voice IDs: Andrew=warm-male  Eric=measured-male  Sara=clear-female  Jenny=conversational-female
+  //
+  // Per-speaker voice-name priority (highest to lowest preference). The picker
+  // tries each in order — both as exact match and substring — then falls back to
+  // gender-filtered quality scoring.
+  const SPEAKER_VOICE_HINTS = {
+    Blaine: [
+      // Edge Neural (best quality — use Edge browser at BSW)
+      'Microsoft Andrew Online (Natural) - English (United States)',
+      'Microsoft Eric Online (Natural) - English (United States)',
+      'Microsoft Guy Online (Natural) - English (United States)',
+      'Microsoft Davis Online (Natural) - English (United States)',
+      'Microsoft Brian Online (Natural) - English (United States)',
+      // Apple Premium (download in System Settings → Accessibility → Spoken Content)
+      'Daniel (Premium)', 'Daniel (Enhanced)', 'Tom (Premium)', 'Tom (Enhanced)',
+      // Chrome server voices
+      'Google UK English Male',
+      // Fallbacks
+      'Daniel', 'Tom', 'Aaron', 'Microsoft Mark', 'Mark'
+    ],
+    Josh: [
+      // Edge Neural
+      'Microsoft Eric Online (Natural) - English (United States)',
+      'Microsoft Davis Online (Natural) - English (United States)',
+      'Microsoft Roger Online (Natural) - English (United States)',
+      'Microsoft Tony Online (Natural) - English (United States)',
+      'Microsoft Guy Online (Natural) - English (United States)',
+      // Apple Premium
+      'Alex (Premium)', 'Alex (Enhanced)', 'Bruce (Premium)', 'Bruce (Enhanced)',
+      // Chrome
+      'Google US English',
+      // Fallbacks
+      'Alex', 'Bruce', 'David', 'Fred'
+    ],
+    Kristin: [
+      // Edge Neural
+      'Microsoft Sara Online (Natural) - English (United States)',
+      'Microsoft Aria Online (Natural) - English (United States)',
+      'Microsoft Emma Online (Natural) - English (United States)',
+      'Microsoft Michelle Online (Natural) - English (United States)',
+      'Microsoft Jenny Online (Natural) - English (United States)',
+      // Apple Premium
+      'Samantha (Premium)', 'Samantha (Enhanced)', 'Ava (Premium)', 'Ava (Enhanced)',
+      'Allison (Premium)', 'Allison (Enhanced)',
+      // Chrome
+      'Google UK English Female',
+      // Fallbacks
+      'Samantha', 'Ava', 'Allison', 'Karen', 'Victoria'
+    ],
+    Jess: [
+      // Edge Neural — UK warmth suits Jess's personal tone
+      'Microsoft Sonia Online (Natural) - English (United Kingdom)',
+      'Microsoft Libby Online (Natural) - English (United Kingdom)',
+      'Microsoft Nancy Online (Natural) - English (United States)',
+      'Microsoft Ashley Online (Natural) - English (United States)',
+      // Apple Premium
+      'Karen (Premium)', 'Karen (Enhanced)', 'Serena (Premium)', 'Serena (Enhanced)',
+      // Chrome
+      'Google UK English Female',
+      // Fallbacks
+      'Karen', 'Serena', 'Victoria', 'Susan'
+    ],
+    Audience: [
+      'Microsoft Maisie Online (Natural) - English (United Kingdom)',
+      'Microsoft Sonia Online (Natural) - English (United Kingdom)',
+      'Moira (Premium)', 'Moira (Enhanced)', 'Tessa (Premium)', 'Tessa (Enhanced)',
+      'Moira', 'Tessa', 'Fiona', 'Veena', 'Hazel'
+    ]
+  };
+  // Voices to NEVER pick (macOS novelty + low-quality)
+  const VOICE_BLOCKLIST = /Bahh|Bells|Boing|Bubbles|Cellos|Deranged|Good News|Bad News|Hysterical|Jester|Junior|Pipe Organ|Princess|Ralph|Trinoids|Whisper|Zarvox|Albert|Organ|Wobble|Eddy|Flo|Grandma|Grandpa|Reed|Rocko|Sandy|Shelley/i;
+  function scoreVoice(v) {
+    const n = v.name || '';
+    if (VOICE_BLOCKLIST.test(n)) return -1000;
+    let score = 0;
+    if (/Online \(Natural\)/i.test(n)) score += 110; // Edge neural
+    if (/Premium/i.test(n))            score += 100; // Apple downloaded premium
+    if (/Neural/i.test(n))             score += 95;
+    if (/Enhanced/i.test(n))           score += 80;
+    if (/Microsoft.*Online/i.test(n))  score += 70;
+    if (/^Google /.test(n))            score += 60; // Chrome server voices
+    if (/Online/i.test(n))             score += 40;
+    if (/Compact/i.test(n))            score -= 30;
+    // Slight nudge toward US/UK English over Indian/Australian for our context
+    if (/en-US/i.test(v.lang))         score += 5;
+    if (/en-GB/i.test(v.lang))         score += 3;
+    return score;
+  }
+  function isFemaleVoice(v) {
+    return /samantha|karen|allison|victoria|susan|zira|moira|tessa|fiona|veena|hazel|ava|jenny|aria|emma|sonia|libby|female|woman|cortana|catherine|serena|fionnuala/i.test(v.name);
+  }
+  function isMaleVoice(v) {
+    return /daniel|alex|aaron|tom|albert|mark|bruce|fred|david|rishi|guy|davis|brian|tony|male|man|oliver|james|arthur|ryan/i.test(v.name);
+  }
+  function pickVoiceForSpeaker(speakerName) {
+    if (!voiceCache.length) loadVoices();
+    if (!voiceCache.length) return null;
+    const pref  = SPEAKER_VOICE_PREFS[speakerName]  || SPEAKER_VOICE_PREFS.Blaine;
+    const hints = SPEAKER_VOICE_HINTS[speakerName] || [];
+    // Tier 1: exact-name hint match in priority order
+    for (const hint of hints) {
+      const found = voiceCache.find((v) => v.name === hint);
+      if (found) return found;
+    }
+    // Tier 2: substring hint match in priority order (handles "(Enhanced)" vs "(Premium)" variants)
+    for (const hint of hints) {
+      const lc = hint.toLowerCase();
+      const found = voiceCache.find((v) => v.name.toLowerCase().includes(lc));
+      if (found) return found;
+    }
+    // Tier 3: gender-filtered quality scoring on English voices
+    const en = voiceCache.filter((v) => /^en/i.test(v.lang));
+    const pool = en.length ? en : voiceCache;
+    const genderFilter = pref.gender === 'female' ? isFemaleVoice
+                       : pref.gender === 'male'   ? isMaleVoice
+                       : (() => true);
+    let candidates = pool.filter(genderFilter).filter((v) => !VOICE_BLOCKLIST.test(v.name));
+    if (!candidates.length) candidates = pool.filter((v) => !VOICE_BLOCKLIST.test(v.name));
+    if (!candidates.length) candidates = pool;
+    candidates.sort((a, b) => scoreVoice(b) - scoreVoice(a));
+    return candidates[0] || voiceCache[0];
+  }
+  function pickVoice() { return pickVoiceForSpeaker('Blaine'); } // legacy callers
+  // ─── Voice diagnostic — fires once when voices first load. Open DevTools console
+  // to see what voices the browser exposed and what got picked per speaker.
+  let _voiceDiagFired = false;
+  function logVoiceDiagnostic() {
+    if (_voiceDiagFired || !voiceCache.length) return;
+    _voiceDiagFired = true;
+    const en = voiceCache.filter((v) => /^en/i.test(v.lang));
+    try {
+      console.groupCollapsed('%c🎙 Voice picker — ' + en.length + ' English voices detected (' + voiceCache.length + ' total)', 'color:#7DD3D8;font-weight:bold');
+      console.table(en.map((v) => ({ name: v.name, lang: v.lang, score: scoreVoice(v), local: v.localService })).sort((a, b) => b.score - a.score));
+      ['Blaine', 'Josh', 'Kristin', 'Jess', 'Audience'].forEach((s) => {
+        const picked = pickVoiceForSpeaker(s);
+        const tag = picked ? (picked.name + ' · ' + picked.lang + ' · score ' + scoreVoice(picked)) : 'NONE';
+        console.log('%c' + s.padEnd(9) + '%c → ' + tag, 'font-weight:bold;color:' + (SPEAKER_COLORS && SPEAKER_COLORS[s] || '#fff'), 'color:inherit');
+      });
+      console.log('%cTo upgrade voice quality on Mac:%c System Settings → Accessibility → Spoken Content → System Voice → click each (Samantha, Daniel, Karen, Alex) → download Premium.', 'font-weight:bold', 'color:inherit');
+      console.log('%cFor best Chrome quality:%c "Google US English" + "Google UK English" voices come built-in (server-side, neural).', 'font-weight:bold', 'color:inherit');
+      console.log('%cFor Edge users:%c Microsoft Online (Natural) voices are highest quality available — Aria, Jenny, Davis, Guy.', 'font-weight:bold', 'color:inherit');
+      console.groupEnd();
+    } catch (_) { /* console may not be available */ }
+  }
+  // Defer diagnostic until voices populate (some browsers populate async)
+  if (synth) {
+    if (voiceCache.length) {
+      setTimeout(logVoiceDiagnostic, 100);
+    } else {
+      const _origOnVoicesChanged = synth.onvoiceschanged;
+      synth.onvoiceschanged = function () {
+        loadVoices();
+        if (typeof _origOnVoicesChanged === 'function') _origOnVoicesChanged.call(synth);
+        setTimeout(logVoiceDiagnostic, 100);
+      };
+    }
+  }
+
+  // ─── Cross-brand SSO pre-fill: when signed-in on co-op.care, forward the email
+  //     to comfortcard.org so the user's Stripe checkout pre-fills automatically.
+  //     Single Supabase project (uhizqukdctkvluluheux) backs both surfaces — we just
+  //     read the session here and rewrite all comfortcard.org anchors with ?email=.
+  function _wireCrossBrandSSO() {
+    try {
+      if (!window.supabase || typeof window.supabase.createClient !== 'function') return;
+      const SUPA_URL = 'https://uhizqukdctkvluluheux.supabase.co';
+      const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVoaXpxdWtkY3Rrdmx1bHVoZXV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NzQ1ODQsImV4cCI6MjA4OTQ1MDU4NH0._AxT5pBEi1GZ167JPJpHeg_k1E0Bbtzyj3UPKdTFEug';
+      const supa = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+      function rewriteAnchors(email) {
+        document.querySelectorAll('a[href*="comfortcard.org"]').forEach((a) => {
+          try {
+            const u = new URL(a.href);
+            if (email) u.searchParams.set('email', email);
+            // Also set utm_orig so the cross-brand attribution survives
+            if (!u.searchParams.get('utm_source')) u.searchParams.set('utm_source', 'why_deck_nav');
+            a.href = u.toString();
+          } catch (_) { /* ignore */ }
+        });
+      }
+      supa.auth.onAuthStateChange((_evt, session) => {
+        if (session && session.user && session.user.email) rewriteAnchors(session.user.email);
+      });
+      supa.auth.getSession().then(({ data: { session } }) => {
+        if (session && session.user && session.user.email) rewriteAnchors(session.user.email);
+      }).catch(() => {});
+    } catch (_) { /* best-effort */ }
+  }
+  // Defer so the @supabase/supabase-js script (loaded for marketplace) has time
+  // to settle. If it's never loaded on /why, this is a graceful no-op.
+  window.setTimeout(_wireCrossBrandSSO, 800);
+
+  // ─── Speaker label chip (top-center, color-per-speaker, fade-in/out) ───
+  const SPEAKER_COLORS = { Blaine: '#FFB98F', Josh: '#7DD3D8', Kristin: '#E8C66A', Jess: '#A8C09A', Audience: '#B0B0B0' };
+  let speakerChipEl = null;
+  function ensureSpeakerChip() {
+    if (speakerChipEl) return speakerChipEl;
+    speakerChipEl = document.createElement('div');
+    speakerChipEl.id = 'speaker-chip';
+    speakerChipEl.style.cssText = "position:fixed;top:18px;left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(0,0,0,0.78);color:#fff;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.18);border-radius:999px;padding:8px 16px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;z-index:200;opacity:0;transition:opacity 0.25s, transform 0.25s;pointer-events:none;white-space:nowrap;box-shadow:0 12px 28px -16px rgba(0,0,0,0.6);";
+    document.body.appendChild(speakerChipEl);
+    return speakerChipEl;
+  }
+  function showSpeakerLabel(name) {
+    const chip = ensureSpeakerChip();
+    chip.textContent = '● ' + name;
+    chip.style.color = SPEAKER_COLORS[name] || '#FFFFFF';
+    chip.style.opacity = '1';
+    chip.style.transform = 'translateX(-50%) translateY(0)';
+  }
+  function hideSpeakerLabel() {
+    if (!speakerChipEl) return;
+    speakerChipEl.style.opacity = '0';
+    speakerChipEl.style.transform = 'translateX(-50%) translateY(-6px)';
+  }
+
+  // ─── Soundtrack progress bar (bottom-fixed, color-per-speaker, follows the queue) ───
+  // Web Speech API doesn't expose progress per utterance, so we estimate duration
+  // from text length × rate and animate fill via CSS transition. On segment end we
+  // snap to the actual cumulative position to correct any drift.
+  const CHARS_PER_SEC_AT_R1 = 14; // ~140 wpm baseline → ~14 chars/sec
+  let soundtrackBgEl = null, soundtrackFillEl = null;
+  let soundtrackTotalChars = 0;
+  let soundtrackElapsedChars = 0;
+
+  function ensureSoundtrackBar() {
+    if (soundtrackBgEl) return;
+    const bg = document.createElement('div');
+    bg.id = 'soundtrack-bar';
+    bg.style.cssText = "position:fixed;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,0.04);z-index:99;pointer-events:none;opacity:0;transition:opacity 0.25s;";
+    const fill = document.createElement('div');
+    fill.id = 'soundtrack-fill';
+    fill.style.cssText = "height:100%;width:0%;background:#FFB98F;transition:width 0.18s linear;";
+    bg.appendChild(fill);
+    document.body.appendChild(bg);
+    soundtrackBgEl = bg; soundtrackFillEl = fill;
+  }
+  function showSoundtrack() {
+    ensureSoundtrackBar();
+    soundtrackBgEl.style.opacity = '1';
+    // Light/dark adapt — slight bg tint by current chrome
+    soundtrackBgEl.style.background = document.body.classList.contains('dark-chrome')
+      ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+  }
+  function hideSoundtrack() {
+    if (!soundtrackBgEl) return;
+    soundtrackBgEl.style.opacity = '0';
+    // Snap fill back to 0 without animating
+    soundtrackFillEl.style.transition = 'none';
+    soundtrackFillEl.style.width = '0%';
+    window.setTimeout(() => { if (soundtrackFillEl) soundtrackFillEl.style.transition = 'width 0.18s linear'; }, 60);
+  }
+  function advanceSoundtrack(seg, pref) {
+    if (!soundtrackFillEl || !soundtrackTotalChars) return;
+    const segChars = (seg.text || '').length;
+    const targetChars = soundtrackElapsedChars + segChars;
+    const targetPct = Math.min(100, (targetChars / soundtrackTotalChars) * 100);
+    // Estimated duration of this segment (drives the CSS transition)
+    const estMs = Math.max(800, (segChars / (CHARS_PER_SEC_AT_R1 * (pref.rate || 1.0))) * 1000);
+    soundtrackFillEl.style.transition = 'width ' + estMs + 'ms linear, background-color 0.25s';
+    soundtrackFillEl.style.background = SPEAKER_COLORS[seg.speaker] || '#FFB98F';
+    soundtrackFillEl.style.width = targetPct + '%';
+    soundtrackElapsedChars = targetChars;
+  }
+
+  // ─── Panel player (3-voice queue, segment-by-segment, breath gap between speakers) ───
+  const voiceBtn = document.getElementById('nav-voice');
+  let panelQueue = [];
+  let panelPlaying = false;
+  let currentAudio = null; // active <audio> element when playing pre-recorded MP3s
+
+  // ─── PRE-RECORDED MP3 PATH (highest quality) ──────────────────────────
+  // If MP3s exist at /audio/why-deck/slide-N-seg-M.mp3 (N = 1-indexed slide,
+  // M = 0-indexed segment within slide), the player uses them instead of
+  // browser TTS. Drop in MP3s from any source — ElevenLabs, OpenAI Playground,
+  // Anthropic, your own voice via phone — and they auto-activate. No code
+  // changes needed; the picker scans on first play.
+  //
+  // Manifest format (optional speed-up): /audio/why-deck/manifest.json with
+  //   {"slides": {"1": [0,1,2,3], "2": [0,1,2,3,4], ...}}
+  // listing which (slide, seg) indices have MP3s. If manifest is missing, the
+  // player does a HEAD probe per segment on first encounter.
+  const AUDIO_BASE = '/audio/why-deck';
+  let audioAvailability = null; // null until first fetch | {}-ish object after
+  let audioProbeCache = {}; // 'slide-seg' → bool
+  async function loadAudioManifest() {
+    if (audioAvailability !== null) return audioAvailability;
+    try {
+      const res = await fetch(AUDIO_BASE + '/manifest.json', { cache: 'no-cache' });
+      if (res.ok) {
+        const data = await res.json();
+        audioAvailability = (data && data.slides) || {};
+        try { console.log('%c🎵 Pre-recorded MP3 manifest loaded', 'color:#FFB98F;font-weight:bold', audioAvailability); } catch (_) {}
+        return audioAvailability;
+      }
+    } catch (_) { /* manifest absent — fall back to per-segment HEAD probe */ }
+    audioAvailability = {};
+    return audioAvailability;
+  }
+  function audioUrlFor(slideIdx, segIdx) {
+    // slideIdx is 0-indexed in PANEL[]; convert to 1-indexed for filename
+    return AUDIO_BASE + '/slide-' + (slideIdx + 1) + '-seg-' + segIdx + '.mp3';
+  }
+  async function hasAudioFor(slideIdx, segIdx) {
+    const key = (slideIdx + 1) + '-' + segIdx;
+    if (key in audioProbeCache) return audioProbeCache[key];
+    // 1. Manifest check (fast path)
+    if (audioAvailability && audioAvailability[String(slideIdx + 1)]) {
+      const segs = audioAvailability[String(slideIdx + 1)];
+      const inManifest = Array.isArray(segs) ? segs.indexOf(segIdx) !== -1 : !!segs[String(segIdx)];
+      audioProbeCache[key] = inManifest;
+      return inManifest;
+    }
+    // 2. HEAD probe (one-time)
+    try {
+      const res = await fetch(audioUrlFor(slideIdx, segIdx), { method: 'HEAD', cache: 'no-cache' });
+      audioProbeCache[key] = res.ok;
+      return res.ok;
+    } catch (_) {
+      audioProbeCache[key] = false;
+      return false;
+    }
+  }
+  // Kick off manifest load early (does not block playback)
+  if (typeof fetch === 'function') loadAudioManifest();
+
+  function setVoiceBtn(state) {
+    if (!voiceBtn) return;
+    voiceBtn.textContent = state === 'playing' ? '⏸ Stop' : '▶ Voice';
+  }
+  function stopPanel() {
+    panelQueue = [];
+    panelPlaying = false;
+    if (synth) synth.cancel();
+    if (currentAudio) {
+      try { currentAudio.pause(); currentAudio.src = ''; } catch (_) {}
+      currentAudio = null;
+    }
+    currentUtterance = null;
+    setVoiceBtn('idle');
+    hideSpeakerLabel();
+    hideSoundtrack();
+  }
+  function stopVoice() { stopPanel(); } // legacy alias
+
+  // Picks audio playback (MP3) if available for this segment, else falls back to TTS
+  async function speakNextSegment() {
+    if (!panelPlaying || !panelQueue.length) {
+      stopPanel();
+      return;
+    }
+    const seg = panelQueue.shift();
+    const pref = SPEAKER_VOICE_PREFS[seg.speaker] || SPEAKER_VOICE_PREFS.Blaine;
+    showSpeakerLabel(seg.speaker);
+    advanceSoundtrack(seg, pref);
+
+    // Check for pre-recorded MP3 first (highest quality path)
+    let useAudio = false;
+    try {
+      useAudio = await hasAudioFor(seg.slideIdx, seg.segIdx);
+    } catch (_) { useAudio = false; }
+
+    if (useAudio) {
+      // ─── MP3 path ─────────────────────────────────────────────
+      const audio = new Audio(audioUrlFor(seg.slideIdx, seg.segIdx));
+      audio.preload = 'auto';
+      currentAudio = audio;
+      const advance = () => {
+        currentAudio = null;
+        const breath = panelQueue.length ? 350 : 0;
+        window.setTimeout(() => {
+          if (panelPlaying && panelQueue.length) speakNextSegment();
+          else stopPanel();
+        }, breath);
+      };
+      audio.onended = advance;
+      audio.onerror = () => {
+        // If MP3 fails to load mid-deck, fall back to TTS for this segment
+        currentAudio = null;
+        try { console.warn('🎵 MP3 failed for slide ' + (seg.slideIdx + 1) + ' seg ' + seg.segIdx + ' — falling back to TTS'); } catch (_) {}
+        speakSegmentTTS(seg, pref);
+      };
+      try {
+        await audio.play();
+      } catch (e) {
+        // Autoplay-policy block — fall back to TTS for this segment only
+        currentAudio = null;
+        speakSegmentTTS(seg, pref);
+      }
+      return;
+    }
+
+    // ─── TTS fallback ──────────────────────────────────────────
+    speakSegmentTTS(seg, pref);
+  }
+
+  function speakSegmentTTS(seg, pref) {
+    if (!synth) {
+      stopPanel();
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(seg.text);
+    u.rate = pref.rate;
+    u.pitch = pref.pitch;
+    u.volume = 1.0;
+    const v = pickVoiceForSpeaker(seg.speaker);
+    if (v) u.voice = v;
+    u.onend = () => {
+      currentUtterance = null;
+      const breath = panelQueue.length ? 350 : 0;
+      window.setTimeout(() => {
+        if (panelPlaying && panelQueue.length) speakNextSegment();
+        else stopPanel();
+      }, breath);
+    };
+    u.onerror = () => {
+      currentUtterance = null;
+      if (panelPlaying && panelQueue.length) speakNextSegment();
+      else stopPanel();
+    };
+    currentUtterance = u;
+    synth.speak(u);
+  }
+  function playPanelForCurrentSlide() {
+    // Allow play even without synth — pre-recorded MP3s work in any browser
+    const rawSegs = (PANEL[idx] || []);
+    if (!rawSegs.length) return;
+    // Attach slide+seg indices so the audio path can locate the right MP3
+    const segs = rawSegs.map((s, segIdx) => ({ ...s, slideIdx: idx, segIdx }));
+    if (!synth && !audioAvailability) {
+      alert('Voice-over needs Web Speech API support, or pre-recorded MP3s at /audio/why-deck/. Try Safari or Chrome on macOS / iOS.');
+      return;
+    }
+    stopPanel();
+    panelQueue = segs;
+    panelPlaying = true;
+    setVoiceBtn('playing');
+    // Soundtrack bar — measure total chars across all segments
+    soundtrackTotalChars = segs.reduce((acc, s) => acc + (s.text || '').length, 0) || 1;
+    soundtrackElapsedChars = 0;
+    showSoundtrack();
+    // Auto-show live tally on votable slides so listeners on their phones see
+    // votes pile up in real time as they hear "tap the one you'd offer."
+    const hasVotable = !!document.querySelectorAll('.tap-vote[data-vote-slide="' + (idx + 1) + '"]').length;
+    if (hasVotable && !tallyVisible) {
+      tallyVisible = true;
+      refreshTally();
+    }
+    speakNextSegment();
+  }
+  function toggleVoice() {
+    if (panelPlaying) stopPanel();
+    else playPanelForCurrentSlide();
+  }
+  if (voiceBtn) voiceBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleVoice(); });
+
+  // Stop voice on slide change so audio doesn't trail behind the wrong slide
+  const _origShow = show;
+  // (Already inside the IIFE; show() above already triggers refreshTally if tally visible.
+  //  We hook stopVoice() here by listening on counter updates via a MutationObserver — simpler:
+  //  patch the keydown navigation. Instead: stop voice anytime user navigates.)
+  ['keydown', 'click', 'touchend'].forEach((ev) => {
+    document.addEventListener(ev, (e) => {
+      // Don't stop voice if the click was on the voice button itself
+      if (e.target && (e.target.id === 'nav-voice' || e.target.closest && e.target.closest('#nav-voice'))) return;
+      // Stop only when navigation actually changes the slide — heuristic: navigation keys + nav buttons + swipe
+      if (ev === 'keydown' && !/Arrow|Page|Home|End|^[0-9]$/.test(e.key)) return;
+      if (panelPlaying) stopPanel();
+    }, true);
+  });
+
+  // Voice-over toggle via "V" key
+  document.addEventListener('keydown', (e) => {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    if (e.key === 'v' || e.key === 'V') { toggleVoice(); e.preventDefault(); }
+  });
+
+  // Initial nav state on first paint
+  show(idx);
+})();
+</script>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// IDEA SUBMIT (slide 13) — write-in suggestion field. Routes through the
+// canonical solvinghealth.com/api/signup so it lands in email_captures with
+// the rest of the network leads. Anonymous if no email; if email is given,
+// we capture properly so we can reply.
+// ═══════════════════════════════════════════════════════════════════════
+// Inline newsletter capture inside the slide-13 success banner — when someone
+// taps the "Stay close · one email" CTA, we reveal a minimal form. POSTs through
+// the canonical /api/signup with source=why_idea_newsletter so it lands in the
+// same email_captures table as everything else, attribution preserved.
+async function submitIdeaNewsletter(e) {
+  e.preventDefault();
+  const emailEl = document.getElementById('idea-newsletter-email');
+  const statusEl = document.getElementById('idea-newsletter-status');
+  if (!emailEl) return false;
+  const email = (emailEl.value || '').trim();
+  if (!email) return false;
+  const attr = {};
+  try {
+    const p = new URLSearchParams(window.location.search);
+    ['utm_source','utm_medium','utm_campaign','event','ref'].forEach((k) => {
+      const v = p.get(k);
+      if (v) attr[k] = v.slice(0, 100);
+    });
+  } catch (_) {}
+  const payload = Object.assign({
+    email,
+    source: 'why_idea_newsletter',
+    brand: 'co-op.care',
+    intent: 'why_deck_newsletter',
+    path: 'newsletter',
+    notes: 'Newsletter signup from /why slide 13 success banner'
+  }, attr);
+  emailEl.disabled = true;
+  if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = 'Sending…'; }
+  try {
+    const r = await fetch('https://solvinghealth.com/api/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!r.ok) throw new Error('signup_' + r.status);
+    if (statusEl) { statusEl.style.color = '#4F6D43'; statusEl.innerHTML = '✓ You\'re on the list. One email when Boulder opens.'; }
+  } catch (err) {
+    emailEl.disabled = false;
+    if (statusEl) { statusEl.style.color = '#A55540'; statusEl.textContent = 'Network hiccup — try again.'; }
+  }
+  return false;
+}
+
+async function submitIdea(e) {
+  e.preventDefault();
+  const form = e.target;
+  const text = (document.getElementById('idea-text').value || '').trim();
+  const name = (document.getElementById('idea-name').value || '').trim();
+  const email = (document.getElementById('idea-email').value || '').trim();
+  const status = document.getElementById('idea-status');
+  const btn = document.getElementById('idea-submit');
+  if (!text) { status.textContent = 'Type a sentence first.'; status.style.color = '#A55540'; return false; }
+
+  // If they didn't give an email, synthesize one so the API row writes cleanly
+  // (api/signup requires email or phone). Anonymous synthetic addresses go to
+  // a sentinel domain we never deliver to — they're for dedup/tracking only.
+  let emailToSend = email;
+  if (!emailToSend) {
+    emailToSend = 'idea-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8) + '@bsw2026.coop.care';
+  }
+
+  // Carry attribution (utm_source=bsw2026, etc.)
+  const attr = {};
+  try {
+    const p = new URLSearchParams(window.location.search);
+    ['utm_source','utm_medium','utm_campaign','event','ref'].forEach((k) => {
+      const v = p.get(k);
+      if (v) attr[k] = v.slice(0, 100);
+    });
+  } catch (_) {}
+
+  const payload = Object.assign({
+    email: emailToSend,
+    name: name || null,
+    blurb: text.slice(0, 280),
+    source: 'why_idea_submit',
+    brand: 'co-op.care',
+    intent: 'why_deck_idea',
+    path: 'idea',
+    notes: 'Idea from /why slide 13 · anonymous=' + (email ? 'no' : 'yes')
+  }, attr);
+
+  btn.disabled = true; btn.textContent = 'Sending…'; status.textContent = '';
+  try {
+    const r = await fetch('https://solvinghealth.com/api/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!r.ok) throw new Error('signup_' + r.status);
+    let trackingCode = null;
+    try { const j = await r.json(); trackingCode = j && j.tracking_code; } catch (_) {}
+    // ── BIG, UNAMBIGUOUS SUCCESS BANNER WITH TWO CTAS ──
+    // Don't clear the textarea (was the "freeze" feel — looked identical to pre-submit).
+    // Instead: lock the form, show a sage-green success card, and surface the two real
+    // next-step CTAs so the audience knows exactly what to do next.
+    const ideaTextEl = document.getElementById('idea-text');
+    if (ideaTextEl) { ideaTextEl.disabled = true; ideaTextEl.style.opacity = '0.55'; }
+    document.getElementById('idea-name').disabled = true;
+    document.getElementById('idea-email').disabled = true;
+    btn.textContent = 'Sent ✓';
+    btn.disabled = true;
+    btn.style.background = '#4F6D43';
+
+    const utm = (function () {
+      try {
+        const p = new URLSearchParams(window.location.search);
+        const carry = ['utm_source','utm_medium','utm_campaign','event','ref'];
+        const tail = carry.map(k => { const v = p.get(k); return v ? (k + '=' + encodeURIComponent(v.slice(0,100))) : null; }).filter(Boolean).join('&');
+        return tail ? '&' + tail : '';
+      } catch (_) { return ''; }
+    })();
+
+    status.style.cssText = "margin-top:14px;padding:20px 22px;background:#E5EFD9;border:1px solid #6B8E5A;border-left:4px solid #4F6D43;border-radius:10px;color:#2A1F15;font-size:14.5px;line-height:1.5;";
+    status.innerHTML =
+      '<div style="font-family:\'Cormorant Garamond\',serif;font-weight:500;font-size:1.22rem;color:#2A1F15;margin-bottom:6px;letter-spacing:-0.01em;">✓ Got it. Blaine + Josh read every one.</div>' +
+      (trackingCode ? '<div style="font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:0.18em;color:#4F6D43;text-transform:uppercase;margin-bottom:14px;">tracking · ' + trackingCode + '</div>' : '<div style="margin-bottom:14px;"></div>') +
+      '<div style="font-family:\'Cormorant Garamond\',serif;font-style:italic;color:#52443A;margin-bottom:14px;">Three ways to plug into Boulder’s grid — pick the one that’s right for you today:</div>' +
+      '<div style="display:grid;grid-template-columns:1fr;gap:10px;">' +
+        // 01 — Newsletter (lowest commit · stay close)
+        '<a href="#" id="idea-newsletter-cta" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;background:#FFFFFF;border:1.5px solid #D8C9A8;border-radius:10px;color:#2A1F15;text-decoration:none;font-weight:600;font-size:14px;">' +
+          '<span><span style="font-family:\'Space Mono\',monospace;font-size:9.5px;letter-spacing:0.18em;color:#8B7A6E;text-transform:uppercase;font-weight:600;">01 · stay close</span><br><span style="font-family:\'Cormorant Garamond\',serif;color:#2A1F15;font-weight:500;font-size:1.05rem;letter-spacing:-0.01em;">One email when Boulder opens enrollment</span></span>' +
+          '<span style="color:#8B7A6E;font-size:16px;">→</span>' +
+        '</a>' +
+        // 02 — Pick a role on the grid (mid commit · contribute)
+        '<a href="https://co-op.care/join?utm_source=why_idea_success' + utm.replace('utm_source=','utm_orig=') + '" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:#FFFFFF;border:1.5px solid #C9644E;border-radius:10px;color:#2A1F15;text-decoration:none;font-weight:600;font-size:14.5px;">' +
+          '<span><span style="font-family:\'Space Mono\',monospace;font-size:9.5px;letter-spacing:0.18em;color:#A5513F;text-transform:uppercase;font-weight:600;">02 · contribute a skill</span><br><span style="font-family:\'Cormorant Garamond\',serif;color:#A5513F;font-weight:600;font-size:1.1rem;">Pick a role on the grid</span><br><span style="font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#8B7A6E;font-weight:500;">co-op.care/join · offer or ask · 60 seconds</span></span>' +
+          '<span style="color:#C9644E;font-size:18px;">→</span>' +
+        '</a>' +
+        // 03 — ComfortCard (full commit · integrate your family)
+        '<a href="https://comfortcard.org/?utm_source=why_idea_success' + utm.replace('utm_source=','utm_orig=') + '" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:#0A1420;border:1.5px solid #0D7377;border-radius:10px;color:#FFFFFF;text-decoration:none;font-weight:600;font-size:14.5px;">' +
+          '<span><span style="font-family:\'Space Mono\',monospace;font-size:9.5px;letter-spacing:0.18em;color:rgba(125,211,216,0.85);text-transform:uppercase;font-weight:600;">03 · integrate your family</span><br><span style="font-family:\'Cormorant Garamond\',serif;color:#7DD3D8;font-weight:600;font-size:1.1rem;">Get a ComfortCard</span><br><span style="font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:500;">comfortcard.org · $19/mo OR 10 hrs/yr · the legit on-ramp</span></span>' +
+          '<span style="color:#7DD3D8;font-size:18px;">→</span>' +
+        '</a>' +
+        // 04 — See your profile (live demo · the proof)
+        '<a href="/profile" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:linear-gradient(135deg,#E5EFD9 0%,#FAF6EA 70%);border:1.5px solid #6B8E5A;border-radius:10px;color:#2A1F15;text-decoration:none;font-weight:600;font-size:14.5px;">' +
+          '<span><span style="font-family:\'Space Mono\',monospace;font-size:9.5px;letter-spacing:0.18em;color:#4F6D43;text-transform:uppercase;font-weight:600;">04 · see the proof</span><br><span style="font-family:\'Cormorant Garamond\',serif;color:#2A1F15;font-weight:600;font-size:1.1rem;">Open my profile</span><br><span style="font-family:\'Space Mono\',monospace;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#8B7A6E;font-weight:500;">your card · stored docs · hours · network</span></span>' +
+          '<span style="color:#4F6D43;font-size:18px;">→</span>' +
+        '</a>' +
+      '</div>' +
+      // Inline newsletter capture (revealed when CTA 01 is tapped)
+      '<form id="idea-newsletter-form" onsubmit="return submitIdeaNewsletter(event)" style="display:none;margin-top:12px;gap:8px;flex-wrap:wrap;">' +
+        '<input type="email" id="idea-newsletter-email" required placeholder="your@email.com" style="flex:1 1 220px;min-width:200px;padding:10px 14px;font-family:inherit;font-size:14px;background:#FFFFFF;border:1.5px solid #D8C9A8;border-radius:8px;color:#2A1F15;outline:none;">' +
+        '<button type="submit" style="padding:10px 18px;background:#4F6D43;color:#FFFFFF;border:none;border-radius:8px;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap;">One email · then nothing</button>' +
+      '</form>' +
+      '<div id="idea-newsletter-status" style="display:none;margin-top:8px;font-size:13px;color:#4F6D43;"></div>' +
+      '<div style="margin-top:14px;font-size:12.5px;color:#52443A;"><a href="#" id="idea-reset-link" style="color:#A5513F;text-decoration:underline;">Send another idea</a></div>';
+
+    // Wire CTA 01 → reveal newsletter form inline (no leaving the page)
+    setTimeout(() => {
+      const newsCta = document.getElementById('idea-newsletter-cta');
+      const newsForm = document.getElementById('idea-newsletter-form');
+      if (newsCta && newsForm) {
+        newsCta.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          newsForm.style.display = 'flex';
+          const inp = document.getElementById('idea-newsletter-email');
+          if (inp) inp.focus();
+        });
+      }
+    }, 50);
+
+    // Wire the "Send another idea" link to clear + re-enable the form
+    setTimeout(() => {
+      const resetLink = document.getElementById('idea-reset-link');
+      if (resetLink) {
+        resetLink.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          if (ideaTextEl) { ideaTextEl.disabled = false; ideaTextEl.value = ''; ideaTextEl.style.opacity = ''; ideaTextEl.focus(); }
+          document.getElementById('idea-name').disabled = false;
+          document.getElementById('idea-email').disabled = false;
+          btn.disabled = false;
+          btn.textContent = 'Send to the founders →';
+          btn.style.background = 'var(--terra)';
+          status.style.cssText = 'margin-top:12px;font-size:13.5px;line-height:1.4;color:var(--ink-dim);min-height:20px;';
+          status.innerHTML = '';
+        });
+      }
+    }, 50);
+  } catch (err) {
+    status.style.color = '#A55540';
+    status.textContent = 'Network hiccup — try again, or grab Blaine + Josh at the back.';
+    btn.disabled = false; btn.textContent = 'Send to the founders →';
+  }
+  return false;
+}
+
+async function whySubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('why-email').value;
+  const btn = document.getElementById('why-btn');
+  btn.disabled = true; btn.textContent = 'Saving…';
+  const SUPA = 'https://uhizqukdctkvluluheux.supabase.co/rest/v1/email_captures';
+  const KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVoaXpxdWtkY3Rrdmx1bHVoZXV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NzQ1ODQsImV4cCI6MjA4OTQ1MDU4NH0._AxT5pBEi1GZ167JPJpHeg_k1E0Bbtzyj3UPKdTFEug';
+  // Pull URL attribution so QR / event / shared links carry origin into the capture.
+  // QRs printed on the BSW Mon May 4 deck point at /why?utm_source=bsw2026.
+  const meta = {};
+  try {
+    const p = new URLSearchParams(window.location.search);
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','event','ref'].forEach(k => {
+      const v = p.get(k);
+      if (v) meta[k] = v.slice(0, 100);
+    });
+  } catch (_) { /* attribution best-effort */ }
+  // If the visitor arrived from a recognized event tag, encode it into source so the
+  // simple Supabase row (no metadata column needed) still queryable by source.
+  const source = meta.event === 'bsw2026' || meta.utm_source === 'bsw2026'
+    ? 'bsw2026_why_capture'
+    : 'why_boulder_enrollment';
+  try {
+    const r = await fetch(SUPA, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': KEY, 'Authorization': 'Bearer ' + KEY, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ email, source, ...(Object.keys(meta).length ? { metadata: meta } : {}) })
+    });
+    const ok = r.ok || r.status === 201;
+    if (!ok) { const b = await r.json().catch(()=>({})); if (b?.code !== '23505') throw new Error(); }
+    document.getElementById('why-form').style.display = 'none';
+    document.getElementById('why-success').style.display = 'block';
+  } catch { btn.disabled = false; btn.textContent = 'Try again'; }
+}
+</script>
+
+<script src="https://harnesshealth.ai/footer.js" defer></script>
+</body>
+</html>

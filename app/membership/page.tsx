@@ -56,7 +56,7 @@ const TIERS = [
   {
     name: "Member",
     price: "$59/mo",
-    desc: "Everything — LMN, care access, living profile, cooperative membership.",
+    desc: "LMN, care access, living profile, cooperative membership.",
     items: [
       "Everything in free assessment",
       "LMN for HSA/FSA ($199 value)",
@@ -68,6 +68,23 @@ const TIERS = [
     ],
     cta: "Join the cooperative",
     href: "/assess",
+    highlight: false,
+  },
+  {
+    name: "DPC",
+    price: "$129/mo",
+    desc: "Your AI-native direct primary care. Sage + Josh Emdur DO + the co-op layer in one membership. HSA-eligible under DPCSA.",
+    items: [
+      "Everything in Member",
+      "Unlimited virtual visits with Josh Emdur DO",
+      "Same-day Sage → physician escalation",
+      "LMNs, care plans, prior auths — included, not piecework",
+      "Priority caregiver matching + dispatch",
+      "Apple Wallet ComfortCard with HSA loading",
+      "Monthly care review with Josh",
+    ],
+    cta: "Talk to Sage about DPC",
+    href: "/dpc",
     highlight: true,
   },
   {
@@ -111,12 +128,13 @@ export default function MembershipPage() {
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs tracking-[0.25em] uppercase text-[#4A6741] font-semibold mb-4">Membership</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-[#292524] tracking-tight leading-tight mb-5">
-            $59/month.<br />
-            <span className="text-[#4A6741]">Pays for itself the first month.</span>
+            Four ways to join.<br />
+            <span className="text-[#4A6741]">All HSA-compatible.</span>
           </h1>
           <p className="text-xl text-[#57534E] leading-relaxed max-w-2xl mx-auto mb-8">
-            The LMN alone ($199 value) is included in your first month. Unlock HSA/FSA pre-tax savings
-            and get a caregiver who stays — because she owns part of the company.
+            Start with a free assessment. Or step into $59/mo cooperative membership. Or take
+            the full AI-native DPC tier at $129/mo — Josh Emdur DO, Sage, and the caregiver
+            network in one membership, paid pre-tax.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <div className="flex items-center gap-2 text-[#57534E]">
@@ -138,7 +156,7 @@ export default function MembershipPage() {
       {/* Pricing tiers */}
       <section className="py-20 px-6 bg-[#F0F5EE]">
         <div className="max-w-5xl mx-auto">
-          <div className="grid sm:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {TIERS.map((tier) => (
               <div
                 key={tier.name}

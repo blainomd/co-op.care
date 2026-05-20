@@ -11,7 +11,7 @@ function HSACalculator() {
   return (
     <div className="max-w-lg mx-auto">
       <div className="mb-8">
-        <label className="block text-sm font-medium text-white/60 mb-3">
+        <label className="block text-sm font-medium text-white/80 mb-3">
           Monthly care spend
         </label>
         <input
@@ -23,7 +23,7 @@ function HSACalculator() {
           onChange={(e) => setMonthlySpend(Number(e.target.value))}
           className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#C5D4B5]"
         />
-        <div className="flex justify-between text-xs text-white/30 mt-2">
+        <div className="flex justify-between text-xs text-white/60 mt-2">
           <span>$100/mo</span>
           <span className="text-white font-semibold text-lg">${monthlySpend}/mo</span>
           <span>$3,000/mo</span>
@@ -32,14 +32,14 @@ function HSACalculator() {
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="bg-white/5 rounded-xl p-5 text-center border border-white/10">
           <div className="text-3xl font-bold text-[#C5D4B5]">${monthlySavings}</div>
-          <div className="text-xs text-white/40 mt-1">saved per month</div>
+          <div className="text-xs text-white/65 mt-1">saved per month</div>
         </div>
         <div className="bg-white/5 rounded-xl p-5 text-center border border-white/10">
           <div className="text-3xl font-bold text-[#C5D4B5]">${annualSavings.toLocaleString()}</div>
-          <div className="text-xs text-white/40 mt-1">saved per year</div>
+          <div className="text-xs text-white/65 mt-1">saved per year</div>
         </div>
       </div>
-      <p className="text-center text-white/30 text-xs">
+      <p className="text-center text-white/60 text-xs">
         Based on 32% combined tax rate. HSA/FSA pays with pre-tax dollars — you keep the difference.
       </p>
     </div>
@@ -60,6 +60,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <a href="/membership" className="hidden sm:block text-sm text-[#57534E] hover:text-[#4A7C59] transition-colors">Membership</a>
             <a href="/caregiver" className="hidden sm:block text-sm text-[#57534E] hover:text-[#4A7C59] transition-colors">Become a Caregiver</a>
+            <a href="/bch" className="hidden md:block text-sm text-[#57534E] hover:text-[#4A7C59] transition-colors">For health systems</a>
             <a
               href="/assess"
               className="text-sm px-4 py-2 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium"
@@ -73,29 +74,42 @@ export default function Home() {
       {/* Hero */}
       <section className="pt-32 pb-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs tracking-[0.25em] uppercase text-[#4A6741] font-semibold mb-5">
-            Boulder, CO &nbsp;·&nbsp; Worker-Owned &nbsp;·&nbsp; Physician-Supervised
+          <a
+            href="/signatories"
+            className="inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-[#4A6741] font-semibold mb-5 hover:text-[#292524] transition-colors group"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4A6741] animate-pulse"></span>
+            <span className="group-hover:underline underline-offset-4 decoration-dotted">Boulder pilot — 200 founding memberships — summer 2026</span>
+            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+          <p className="text-xs tracking-[0.25em] uppercase text-[#57534E]/70 font-semibold mb-4">
+            The first thing every aging family needs is a ramp.
           </p>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#292524] leading-[1.05] mb-6">
-            The app that comes<br />
-            <span className="text-[#4A6741]">with a caregiver.</span>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#292524] leading-[1.05] mb-5">
+            Then a caregiver.<br />
+            <span className="font-[var(--font-serif)] italic font-normal text-[#4A6741]">Then a cooperative.</span>
           </h1>
-          <p className="text-xl text-[#57534E] leading-relaxed max-w-2xl mx-auto mb-10">
-            $59/month membership. Pays for itself — save $936/year using HSA/FSA pre-tax dollars.
-            When you need care, the caregiver already knows your name.
+          <div className="text-lg sm:text-xl font-semibold text-[#292524] mb-4 leading-snug">
+            Of the community.&nbsp; By the community.&nbsp; For the community.
+          </div>
+          <p className="text-lg text-[#57534E] leading-relaxed max-w-2xl mx-auto mb-10">
+            A worker-owned cooperative for in-home care, age-in-place home modifications,
+            and &sect;213(d) tax-routed wealth preservation. Founding members keep
+            $300,000&ndash;$500,000 of family wealth across the aging trajectory that
+            the traditional system takes.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a
-              href="/assess"
+              href="/membership"
               className="inline-block px-9 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm"
             >
-              Talk to Sage about your family&apos;s care
+              Reserve a founding membership &rarr;
             </a>
             <a
-              href="/assess?intent=lmn"
+              href="#cooperative-pension"
               className="inline-block px-9 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors"
             >
-              Get a $199 LMN &rarr;
+              See the math &rarr;
             </a>
           </div>
           <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#57534E]/60">
@@ -115,6 +129,122 @@ export default function Home() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#4A6741] inline-block"></span>
               50-state physician oversight
             </span>
+          </div>
+        </div>
+      </section>
+
+      {/* Door 0 — Modification Cooperative (THE WEDGE) */}
+      <section className="py-20 px-6 bg-[#F0F5EE] border-y border-[#C5D4B5]/40">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-10 items-center">
+            <div className="flex-1">
+              <p className="text-xs tracking-[0.25em] uppercase text-[#4A6741] font-semibold mb-3">
+                Door 0 — The first step
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#292524] tracking-tight mb-4">
+                Get your home ready to age in place.
+              </h2>
+              <p className="text-lg text-[#57534E] leading-relaxed mb-5">
+                Ramps. Grab bars. Walk-in showers. Smart-home fall prevention.
+                Cooperative contractor network, member-priced. Physician-attested
+                LMN routes the project pre-tax through your HSA.
+              </p>
+              <p className="text-base font-semibold text-[#4A6741] mb-6">
+                Typical family saves $1,500&ndash;$10,000 on a $5K&ndash;$30K modification project.
+              </p>
+              <a
+                href="/assess?intent=modification"
+                className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors"
+              >
+                Modify my home &rarr;
+              </a>
+            </div>
+            <div className="flex-shrink-0 bg-white rounded-2xl p-8 border border-[#C5D4B5]/40 max-w-xs w-full text-center">
+              <div className="text-4xl font-bold text-[#4A6741] mb-1">$1,500&ndash;$10K</div>
+              <div className="text-sm text-[#57534E] mb-4">pre-tax savings via HSA LMN</div>
+              <div className="text-xs text-[#57534E]/70 leading-relaxed">
+                On a $5K&ndash;$30K home modification project at 32% combined tax rate.
+                Physician-attested under &sect;213(d).
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DPC Partnership — Not a signature factory */}
+      <section className="py-20 px-6 bg-[#292524]">
+        <div className="max-w-4xl mx-auto text-white">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#C5D4B5] font-semibold mb-4">
+            Your care is not a signature factory.
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6 leading-tight">
+            Your DPC partner is a physician who owns his practice.
+          </h2>
+          <p className="text-lg text-white/75 leading-relaxed mb-4 max-w-3xl">
+            co-op.care pairs every family with <a href="https://altru.care" className="text-[#C5D4B5] hover:text-white underline underline-offset-4">Altru.care</a>,
+            a 50-state licensed Direct Primary Care practice led by Josh Emdur DO. Same-day virtual access.
+            Sage as his clinical co-pilot. One monthly membership instead of per-visit transactions.
+          </p>
+          <p className="text-base text-white/80 leading-relaxed mb-10 max-w-3xl">
+            Letters of Medical Necessity, care plans, prior auths, CCM, RTM, and ACP are included in the
+            DPC membership &mdash; not piecework. The practice signs every document personally. HSA-eligible
+            under DPCSA at $129/month.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a
+              href="/dpc"
+              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#C5D4B5] text-[#292524] hover:bg-white transition-colors text-center"
+            >
+              How DPC works with co-op.care
+            </a>
+            <a
+              href="https://altru.care"
+              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-transparent border border-white/30 text-white hover:bg-white/10 transition-colors text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Meet the practice &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Cooperative Pension — wealth math */}
+      <section id="cooperative-pension" className="py-20 px-6 bg-[#FEFCF6] border-b border-[#C5D4B5]/30">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#4A6741] font-semibold text-center mb-3">
+            The Cooperative Pension
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#292524] text-center mb-6 leading-tight">
+            $300,000&ndash;$500,000 kept in your family.
+          </h2>
+          <p className="text-lg text-[#57534E] leading-relaxed text-center max-w-3xl mx-auto mb-10">
+            Across 30 years, the average American family loses $500K&ndash;$1.5M to the traditional
+            aging trajectory: nursing-home costs, adult-child caregiver opportunity cost,
+            Medicaid spend-down, tax-inefficient spending. The cooperative preserves
+            $300K&ndash;$500K of that.
+          </p>
+          <div className="grid sm:grid-cols-4 gap-5 mb-10">
+            {[
+              { label: "Nursing home costs avoided", value: "$80K–$150K/yr", sub: "median US nursing home" },
+              { label: "Adult-child opportunity cost", value: "$50K–$200K", sub: "over the care trajectory" },
+              { label: "Medicaid spend-down avoided", value: "$200K+", sub: "via cooperative structure" },
+              { label: "HSA tax savings over 10 yrs", value: "$9K–$30K", sub: "at $936/yr average" },
+            ].map((item) => (
+              <div key={item.label} className="bg-white rounded-2xl p-5 border border-[#C5D4B5]/40 text-center">
+                <div className="text-2xl font-bold text-[#4A6741] mb-1">{item.value}</div>
+                <div className="text-xs font-semibold text-[#292524] mb-1">{item.label}</div>
+                <div className="text-xs text-[#57534E]/70">{item.sub}</div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <a
+              href="#hsa-calculator"
+              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors"
+            >
+              Calculate your savings &rarr;
+            </a>
           </div>
         </div>
       </section>
@@ -212,8 +342,8 @@ export default function Home() {
             <div className="text-xs text-[#C5D4B5] mb-3 uppercase tracking-wider">Industry turnover</div>
             <div className="flex items-center justify-center gap-6">
               <div>
-                <div className="text-4xl font-bold text-white/40 line-through">77%</div>
-                <div className="text-xs text-white/40 mt-1">traditional agency</div>
+                <div className="text-4xl font-bold text-white/65 line-through">77%</div>
+                <div className="text-xs text-white/65 mt-1">traditional agency</div>
               </div>
               <div className="text-[#C5D4B5] text-xl">→</div>
               <div>
@@ -233,7 +363,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="font-bold text-white mb-2">Worker-owned</h3>
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm text-white/80 leading-relaxed">
                 Caregivers earn $25–28/hr W-2 with cooperative equity. Every hour builds their ownership stake. After 90 days, they vote on how the cooperative runs.
               </p>
             </div>
@@ -244,7 +374,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="font-bold text-white mb-2">Physician-supervised</h3>
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm text-white/80 leading-relaxed">
                 Josh Emdur DO — licensed in all 50 states, BCH hospitalist since 2008 — reviews every clinical output before delivery. AI drafts. He decides.
               </p>
             </div>
@@ -256,11 +386,84 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="font-bold text-white mb-2">PE-proof structure</h3>
-              <p className="text-sm text-white/60 leading-relaxed">
+              <p className="text-sm text-white/80 leading-relaxed">
                 Colorado Limited Cooperative Association. 51% patron voting enforced by law. Cannot be acquired. Cannot be flipped. Cannot extract.
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Trust is the OS of medicine */}
+      <section className="py-20 px-6 bg-[#FEFCF6] border-y border-[#C5D4B5]/30">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#4A6741] font-semibold text-center mb-4">
+            Trust is the operating system of medicine
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#292524] text-center mb-6 leading-tight">
+            Every output passes through a named clinician with skin in the game.
+          </h2>
+          <p className="text-lg text-[#57534E] leading-relaxed text-center mb-10">
+            Every care hour, every modification project, every health event is attested
+            by name through our 50-state physician network at{" "}
+            <a href="https://altru.care" className="text-[#4A6741] underline underline-offset-4 hover:text-[#292524]">altru.care</a>.
+            AI drafts. The physician decides. The family sees the name.
+          </p>
+          <blockquote className="bg-white rounded-2xl p-8 border border-[#C5D4B5]/40 text-center">
+            <p className="text-lg text-[#292524] leading-relaxed mb-5 italic">
+              &ldquo;The moat is whoever first connects grounded clinical evidence
+              to physician-earned trust.&rdquo;
+            </p>
+            <footer className="text-sm text-[#57534E]">
+              <span className="font-bold text-[#292524]">Christian P&eacute;an, MD</span>
+              <span className="text-[#57534E]/60">&nbsp;&mdash;&nbsp;</span>
+              orthopedic trauma surgeon, Techy Surgeon Substack, April 2026
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* Founding membership urgency */}
+      <section className="py-20 px-6 bg-[#4A6741] text-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#C5D4B5] font-semibold mb-3">
+            Boulder Startup Week &mdash; May 2026
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            200 Founding Memberships.<br />Boulder pilot. Closing June 30.
+          </h2>
+          <p className="text-[#C5D4B5] text-lg mb-8 max-w-xl mx-auto">
+            $499/yr locked for 3 years. Standard tiers: $59/mo Member or $129/mo DPC. Founding rate is the lowest the cooperative will ever offer.
+          </p>
+          <div className="bg-white/10 rounded-2xl p-6 border border-white/20 max-w-lg mx-auto mb-8 text-left">
+            <p className="text-sm font-semibold text-[#C5D4B5] uppercase tracking-wider mb-4">
+              What founding members #1&ndash;200 get:
+            </p>
+            <ul className="space-y-2 text-sm text-white/90">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C5D4B5] mt-1.5 flex-shrink-0 inline-block"></span>
+                First access to caregiver matches
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C5D4B5] mt-1.5 flex-shrink-0 inline-block"></span>
+                Member-share equity in the LCA cooperative
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C5D4B5] mt-1.5 flex-shrink-0 inline-block"></span>
+                A voice on the founding board
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C5D4B5] mt-1.5 flex-shrink-0 inline-block"></span>
+                Your story shapes the network as it scales
+              </li>
+            </ul>
+          </div>
+          <a
+            href="/membership"
+            className="inline-block px-10 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] hover:bg-[#C5D4B5] transition-colors"
+          >
+            Become a founding member &rarr;
+          </a>
         </div>
       </section>
 
@@ -270,7 +473,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <p className="text-xs tracking-[0.25em] uppercase text-[#C5D4B5] font-semibold mb-3">HSA/FSA Calculator</p>
             <h2 className="text-3xl font-bold mb-4">See what you save.</h2>
-            <p className="text-white/50 text-lg">
+            <p className="text-white/75 text-lg">
               Care through co-op.care is HSA/FSA eligible. Pay with pre-tax dollars and keep 28–36% instantly.
             </p>
           </div>
@@ -383,10 +586,10 @@ export default function Home() {
       <section id="join" className="py-20 px-6 bg-[#292524] text-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Start with a conversation.</h2>
-          <p className="text-white/50 text-lg mb-10">
+          <p className="text-white/75 text-lg mb-10">
             Boulder, CO. Launching 2026. $59/month. Your first assessment is always free.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
             <a
               href="/assess"
               className="px-8 py-4 rounded-full font-semibold bg-[#4A6741] text-white hover:bg-[#4A7C59] transition-colors"
@@ -406,18 +609,46 @@ export default function Home() {
               Become a caregiver-owner
             </a>
           </div>
+          {/* Family-caregiver sub-door */}
+          <div className="bg-white/5 border border-white/20 rounded-2xl p-6 max-w-xl mx-auto mb-8 text-left">
+            <p className="text-xs tracking-[0.2em] uppercase text-[#C5D4B5] font-semibold mb-2">Caring for your own parent in Boulder?</p>
+            <p className="text-sm text-white/85 leading-relaxed mb-4">
+              Become a W-2 cooperative caregiver for your own family member.
+              $25&ndash;28/hr + cooperative equity + Social Security credits +
+              &sect;213(d)-eligible HSA flow. The cooperative employs you to do
+              what you&apos;d otherwise do unpaid.
+            </p>
+            <a
+              href="/caregiver?family=true"
+              className="inline-block text-sm font-semibold text-[#C5D4B5] hover:text-white underline underline-offset-4 transition-colors"
+            >
+              Start earning for family care &rarr;
+            </a>
+          </div>
+          {/* Secondary links — petition + signatories + health systems */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-sm text-white/80 mb-12">
+            <a href="/signatories" className="hover:text-white underline decoration-dotted underline-offset-4 transition-colors">
+              See who&apos;s standing with us →
+            </a>
+            <a href="/boulder" className="hover:text-white underline decoration-dotted underline-offset-4 transition-colors">
+              Boulder petition →
+            </a>
+            <a href="/bch" className="hover:text-white underline decoration-dotted underline-offset-4 transition-colors">
+              For health systems →
+            </a>
+          </div>
           <div className="grid grid-cols-3 gap-6 max-w-xs mx-auto">
             <div className="text-center">
               <div className="text-2xl font-bold">$59</div>
-              <div className="text-white/30 text-xs mt-1">per month</div>
+              <div className="text-white/60 text-xs mt-1">per month</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold">1</div>
-              <div className="text-white/30 text-xs mt-1">vote per member</div>
+              <div className="text-white/60 text-xs mt-1">vote per member</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold">50</div>
-              <div className="text-white/30 text-xs mt-1">states covered</div>
+              <div className="text-white/60 text-xs mt-1">states covered</div>
             </div>
           </div>
         </div>
@@ -588,6 +819,29 @@ export default function Home() {
         })}}
       />
 
+      {/* Andrej Rosenthal — the piece that started it */}
+      <section className="py-16 px-6 bg-[#292524] text-white border-t border-white/10">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#C5D4B5] font-semibold mb-4">
+            The piece that started it
+          </p>
+          <blockquote className="text-xl sm:text-2xl font-semibold text-white leading-snug mb-5">
+            &ldquo;I will not go to the emergency room.&rdquo;
+          </blockquote>
+          <p className="text-base text-white/75 leading-relaxed mb-6">
+            Andrej Rosenthal said it again and again as he was dying.
+            His wife, a doctor, built him a home hospital so he wouldn&apos;t have to.
+          </p>
+          <p className="text-lg font-bold text-[#C5D4B5] mb-8">This is the answer.</p>
+          <a
+            href="/manifesto"
+            className="inline-block text-sm text-white/60 hover:text-white underline underline-offset-4 transition-colors"
+          >
+            Read the manifesto &rarr; co-op.care/manifesto
+          </a>
+        </div>
+      </section>
+
       {/* Medical Disclaimer */}
       <section className="py-6 border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -597,11 +851,11 @@ export default function Home() {
             Always consult a qualified healthcare provider for diagnosis and treatment.
           </p>
           <div className="flex items-center justify-center gap-4 mt-3 text-xs text-gray-400">
-            <a href="https://solvinghealth.com/privacy" className="hover:text-gray-600">Privacy</a>
+            <a href="https://harnesshealth.ai/legal/privacy" className="hover:text-gray-600">Privacy</a>
             <span>|</span>
-            <a href="https://solvinghealth.com/terms" className="hover:text-gray-600">Terms</a>
+            <a href="https://harnesshealth.ai/legal/terms" className="hover:text-gray-600">Terms</a>
             <span>|</span>
-            <a href="https://solvinghealth.com/hipaa" className="hover:text-gray-600">HIPAA Notice</a>
+            <a href="https://harnesshealth.ai/legal/hipaa" className="hover:text-gray-600">HIPAA Notice</a>
           </div>
         </div>
       </section>
@@ -609,7 +863,7 @@ export default function Home() {
       {/* Ecosystem footer strip */}
       <section className="py-10 px-6 bg-[#1a1715]">
         <div className="max-w-5xl mx-auto">
-          <p className="text-white/20 text-xs text-center tracking-widest uppercase mb-5">Part of the SolvingHealth ecosystem</p>
+          <p className="text-white/50 text-xs text-center tracking-widest uppercase mb-5">Part of the SolvingHealth ecosystem</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             {[
               { label: "solvinghealth.com", href: "https://solvinghealth.com" },
@@ -624,13 +878,18 @@ export default function Home() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/20 hover:text-white/50 transition-colors"
+                className="text-white/50 hover:text-white/75 transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </div>
-          <p className="text-center text-white/10 text-xs mt-6">
+          <div className="text-center mt-5">
+            <a href="/manifesto" className="text-white/40 hover:text-white/70 text-xs underline underline-offset-4 transition-colors">
+              co-op.care/manifesto
+            </a>
+          </div>
+          <p className="text-center text-white/10 text-xs mt-4">
             co-op.care Technologies LLC — Boulder, Colorado. Worker-owned. Physician-supervised.
           </p>
         </div>
