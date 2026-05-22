@@ -46,6 +46,126 @@ function HSACalculator() {
   );
 }
 
+function EquityVisualizer() {
+  const [hoursPerWeek, setHoursPerWeek] = useState(25);
+  const [years, setYears] = useState(3);
+
+  // Honest, illustrative model — not a guaranteed return.
+  const WAGE = 26; // $/hr, midpoint of the $25–28 W-2 range
+  const EQUITY_PER_HOUR = 1.25; // illustrative patronage credited to the member's capital account, per hour
+  const annualHours = hoursPerWeek * 52;
+
+  const cumulativeWages = Math.round(annualHours * WAGE * years);
+  const ownershipStake = Math.round(annualHours * EQUITY_PER_HOUR * years);
+
+  // Per-year series for the little bar chart.
+  const series = Array.from({ length: years }, (_, i) => {
+    const y = i + 1;
+    return {
+      year: y,
+      wages: Math.round(annualHours * WAGE * y),
+      equity: Math.round(annualHours * EQUITY_PER_HOUR * y),
+    };
+  });
+  const maxEquity = series[series.length - 1].equity || 1;
+
+  // Agency comparison: a staffing agency typically keeps $8–15/hr of margin
+  // and grants zero ownership. Use $11 midpoint, illustratively.
+  const agencyMarginKept = Math.round(annualHours * 11 * years);
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      <div className="grid sm:grid-cols-2 gap-6 mb-8">
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-3">
+            Hours per week
+          </label>
+          <input
+            type="range"
+            min={10}
+            max={40}
+            step={5}
+            value={hoursPerWeek}
+            onChange={(e) => setHoursPerWeek(Number(e.target.value))}
+            className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#C5D4B5]"
+          />
+          <div className="flex justify-between text-xs text-white/60 mt-2">
+            <span>10</span>
+            <span className="text-white font-semibold">{hoursPerWeek} hrs/wk</span>
+            <span>40</span>
+          </div>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-white/80 mb-3">
+            Years as a caregiver-owner
+          </label>
+          <input
+            type="range"
+            min={1}
+            max={10}
+            step={1}
+            value={years}
+            onChange={(e) => setYears(Number(e.target.value))}
+            className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#C5D4B5]"
+          />
+          <div className="flex justify-between text-xs text-white/60 mt-2">
+            <span>1</span>
+            <span className="text-white font-semibold">{years} {years === 1 ? "year" : "years"}</span>
+            <span>10</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="bg-white/5 rounded-xl p-5 text-center border border-white/10">
+          <div className="text-3xl font-bold text-white">${cumulativeWages.toLocaleString()}</div>
+          <div className="text-xs text-white/65 mt-1">W-2 wages earned at ${WAGE}/hr</div>
+        </div>
+        <div className="bg-[#C5D4B5]/15 rounded-xl p-5 text-center border border-[#C5D4B5]/40">
+          <div className="text-3xl font-bold text-[#C5D4B5]">${ownershipStake.toLocaleString()}</div>
+          <div className="text-xs text-white/75 mt-1">cooperative ownership stake built</div>
+        </div>
+      </div>
+
+      {/* Ownership growth over time */}
+      <div className="bg-white/5 rounded-xl p-5 border border-white/10 mb-6">
+        <p className="text-xs text-white/65 uppercase tracking-wider mb-4">Ownership stake, year by year</p>
+        <div className="flex items-end justify-between gap-1.5 h-28">
+          {series.map((s) => (
+            <div key={s.year} className="flex-1 flex flex-col items-center justify-end h-full">
+              <div className="text-[10px] text-[#C5D4B5] mb-1 font-semibold">
+                ${(s.equity / 1000).toFixed(1)}k
+              </div>
+              <div
+                className="w-full bg-[#C5D4B5] rounded-t-sm transition-all duration-300"
+                style={{ height: `${Math.max(6, (s.equity / maxEquity) * 100)}%` }}
+              />
+              <div className="text-[10px] text-white/50 mt-1.5">Y{s.year}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-white/5 rounded-xl p-4 border border-white/10 text-center mb-4">
+        <p className="text-sm text-white/80 leading-relaxed">
+          At a staffing agency, roughly{" "}
+          <span className="text-white font-semibold">${agencyMarginKept.toLocaleString()}</span>{" "}
+          of margin over {years} {years === 1 ? "year" : "years"} would go to the agency&apos;s
+          owners — and you&apos;d hold <span className="text-white font-semibold">zero</span> ownership.
+          Here, that value compounds into your stake in the cooperative.
+        </p>
+      </div>
+
+      <p className="text-center text-white/50 text-xs leading-relaxed">
+        Illustrative model. Wages reflect the $25&ndash;28/hr W-2 range; the ownership figure
+        is an illustrative patronage allocation, not a guaranteed payout. Actual patronage is
+        set annually by the cooperative&apos;s surplus and bylaws. Agency margin is a typical
+        $8&ndash;15/hr industry range, shown at $11.
+      </p>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#FEFCF6]">
@@ -390,6 +510,32 @@ export default function Home() {
                 Colorado Limited Cooperative Association. 51% patron voting enforced by law. Cannot be acquired. Cannot be flipped. Cannot extract.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Equity accrual visualizer — what "owning it" actually builds */}
+      <section className="py-20 px-6 bg-[#292524] text-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-xs tracking-[0.25em] uppercase text-[#C5D4B5] font-semibold mb-3">
+              What &ldquo;owning it&rdquo; builds
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Every shift builds a stake.</h2>
+            <p className="text-white/75 text-lg max-w-xl mx-auto">
+              At an agency, the hours you work build someone else&apos;s margin. Here, every
+              hour pays a real W-2 wage <span className="text-[#C5D4B5]">and</span> accrues
+              ownership in the cooperative. Move the sliders to see what stays with you.
+            </p>
+          </div>
+          <EquityVisualizer />
+          <div className="text-center mt-10">
+            <a
+              href="/caregiver"
+              className="inline-block px-8 py-4 rounded-lg bg-[#4A6741] text-white font-semibold hover:bg-[#4A7C59] transition-colors"
+            >
+              Become a caregiver-owner &rarr;
+            </a>
           </div>
         </div>
       </section>
