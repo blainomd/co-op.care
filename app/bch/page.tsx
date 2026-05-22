@@ -27,7 +27,7 @@ export default function BCHPage() {
             </Link>
             <Link
               href="/bch#pilot"
-              className="text-sm px-4 py-2 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium"
+              className="text-sm px-4 py-2 bg-[#4A6741] text-white rounded-[8px] hover:bg-[#292524] transition-colors font-medium"
             >
               Request 30-min pilot review
             </Link>
@@ -54,13 +54,13 @@ export default function BCHPage() {
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <a
               href="#on-ramps"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm text-center"
+              className="inline-block px-8 py-4 rounded-[8px] text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm text-center"
             >
               See the two on-ramps
             </a>
             <a
               href="#pilot"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors text-center"
+              className="inline-block px-8 py-4 rounded-[8px] text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors text-center"
             >
               90-day pilot terms &rarr;
             </a>
@@ -323,7 +323,7 @@ export default function BCHPage() {
           </div>
           <a
             href="mailto:blaine@co-op.care?subject=Community%20Package%20Pilot%20Review%20for%20BCH"
-            className="inline-block px-9 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] hover:bg-[#F0F5EE] transition-colors"
+            className="inline-block px-9 py-4 rounded-[8px] text-base font-semibold bg-white text-[#4A6741] hover:bg-[#F0F5EE] transition-colors"
           >
             Request the 30-minute pilot review
           </a>

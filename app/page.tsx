@@ -101,13 +101,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <a
               href="/membership"
-              className="inline-block px-9 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm"
+              className="inline-block px-9 py-4 rounded-lg text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm"
             >
               Reserve a founding membership &rarr;
             </a>
             <a
               href="#cooperative-pension"
-              className="inline-block px-9 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors"
+              className="inline-block px-9 py-4 rounded-lg text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors"
             >
               See the math &rarr;
             </a>
@@ -154,7 +154,7 @@ export default function Home() {
               </p>
               <a
                 href="/assess?intent=modification"
-                className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors"
+                className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors"
               >
                 Modify my home &rarr;
               </a>
@@ -193,13 +193,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="/dpc"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#C5D4B5] text-[#292524] hover:bg-white transition-colors text-center"
+              className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-[#C5D4B5] text-[#292524] hover:bg-white transition-colors text-center"
             >
               How DPC works with co-op.care
             </a>
             <a
               href="https://altru.care"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-transparent border border-white/30 text-white hover:bg-white/10 transition-colors text-center"
+              className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-transparent border border-white/30 text-white hover:bg-white/10 transition-colors text-center"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -241,7 +241,7 @@ export default function Home() {
           <div className="text-center">
             <a
               href="#hsa-calculator"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors"
+              className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors"
             >
               Calculate your savings &rarr;
             </a>
@@ -460,7 +460,7 @@ export default function Home() {
           </div>
           <a
             href="/membership"
-            className="inline-block px-10 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] hover:bg-[#C5D4B5] transition-colors"
+            className="inline-block px-10 py-4 rounded-lg text-base font-semibold bg-white text-[#4A6741] hover:bg-[#C5D4B5] transition-colors"
           >
             Become a founding member &rarr;
           </a>
@@ -481,7 +481,7 @@ export default function Home() {
           <div className="text-center mt-10">
             <a
               href="/assess"
-              className="inline-block px-8 py-4 rounded-full bg-[#4A6741] text-white font-semibold hover:bg-[#4A7C59] transition-colors"
+              className="inline-block px-8 py-4 rounded-lg bg-[#4A6741] text-white font-semibold hover:bg-[#4A7C59] transition-colors"
             >
               Get your free LMN assessment
             </a>
@@ -518,7 +518,7 @@ export default function Home() {
           <div className="mt-10">
             <a
               href="/assess"
-              className="inline-block px-8 py-4 rounded-full bg-[#4A6741] text-white font-semibold hover:bg-[#292524] transition-colors"
+              className="inline-block px-8 py-4 rounded-lg bg-[#4A6741] text-white font-semibold hover:bg-[#292524] transition-colors"
             >
               Start with a free assessment
             </a>
@@ -592,19 +592,19 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
             <a
               href="/assess"
-              className="px-8 py-4 rounded-full font-semibold bg-[#4A6741] text-white hover:bg-[#4A7C59] transition-colors"
+              className="px-8 py-4 rounded-lg font-semibold bg-[#4A6741] text-white hover:bg-[#4A7C59] transition-colors"
             >
               Free assessment — no forms
             </a>
             <a
               href="/membership"
-              className="px-8 py-4 rounded-full font-semibold bg-white/10 text-white border border-white/20 hover:border-white/50 transition-colors"
+              className="px-8 py-4 rounded-lg font-semibold bg-white/10 text-white border border-white/20 hover:border-white/50 transition-colors"
             >
               See $59/mo membership
             </a>
             <a
               href="/caregiver"
-              className="px-8 py-4 rounded-full font-semibold bg-white/10 text-white border border-white/20 hover:border-white/50 transition-colors"
+              className="px-8 py-4 rounded-lg font-semibold bg-white/10 text-white border border-white/20 hover:border-white/50 transition-colors"
             >
               Become a caregiver-owner
             </a>
@@ -779,7 +779,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <a href="/assess" className="inline-block px-8 py-4 rounded-full bg-[#4A6741] text-white font-semibold hover:bg-[#292524] transition-colors">Start with a free assessment</a>
+            <a href="/assess" className="inline-block px-8 py-4 rounded-lg bg-[#4A6741] text-white font-semibold hover:bg-[#292524] transition-colors">Start with a free assessment</a>
           </div>
         </div>
       </section>

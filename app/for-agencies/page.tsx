@@ -148,13 +148,13 @@ export default function ForAgenciesPage() {
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <a
               href="#how-it-works"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm text-center"
+              className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm text-center"
             >
               See how it works
             </a>
             <a
               href="#pricing"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors text-center"
+              className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors text-center"
             >
               See pricing &rarr;
             </a>
@@ -321,7 +321,7 @@ export default function ForAgenciesPage() {
                 </p>
                 <a
                   href="#contact"
-                  className={`inline-block text-center text-sm font-semibold px-5 py-3 rounded-full transition-colors ${
+                  className={`inline-block text-center text-sm font-semibold px-5 py-3 rounded-lg transition-colors ${
                     tier.highlight
                       ? "bg-white text-[#4A6741] hover:bg-[#F0F5EE]"
                       : "bg-[#4A6741] text-white hover:bg-[#292524]"
@@ -376,12 +376,12 @@ export default function ForAgenciesPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 px-5 py-4 rounded-full border border-[#C5D4B5]/60 bg-white text-[#292524] text-base placeholder:text-[#57534E]/50 focus:outline-none focus:border-[#4A6741] transition-colors"
+                className="flex-1 px-5 py-4 rounded-lg border border-[#C5D4B5]/60 bg-white text-[#292524] text-base placeholder:text-[#57534E]/50 focus:outline-none focus:border-[#4A6741] transition-colors"
               />
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-8 py-4 rounded-full bg-[#4A6741] text-white font-semibold text-base hover:bg-[#292524] transition-colors disabled:opacity-60 whitespace-nowrap"
+                className="px-8 py-4 rounded-lg bg-[#4A6741] text-white font-semibold text-base hover:bg-[#292524] transition-colors disabled:opacity-60 whitespace-nowrap"
               >
                 {submitting ? "Sending…" : "Talk to us →"}
               </button>

@@ -86,7 +86,7 @@ export default function ConfirmTransactionPage() {
             </p>
             <a
               href="/time-bank"
-              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium"
+              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-lg hover:bg-[#292524] transition-colors font-medium"
             >
               Back to your Care Hours dashboard
             </a>
@@ -117,7 +117,7 @@ export default function ConfirmTransactionPage() {
             </p>
             <a
               href="/time-bank"
-              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium"
+              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-lg hover:bg-[#292524] transition-colors font-medium"
             >
               Back to your Care Hours dashboard
             </a>
@@ -270,7 +270,7 @@ export default function ConfirmTransactionPage() {
           <button
             onClick={handleConfirm}
             disabled={confirming}
-            className="w-full py-4 bg-[#4A6741] text-white rounded-full font-semibold text-base hover:bg-[#292524] transition-colors disabled:opacity-60"
+            className="w-full py-4 bg-[#4A6741] text-white rounded-lg font-semibold text-base hover:bg-[#292524] transition-colors disabled:opacity-60"
           >
             {confirming ? "Confirming..." : `Confirm — ${transaction.hours.toFixed(1)} Care ${transaction.hours === 1 ? "Hour" : "Hours"} transferred`}
           </button>

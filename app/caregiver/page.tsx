@@ -70,7 +70,7 @@ export default function CaregiverPage() {
           </a>
           <div className="flex items-center gap-3">
             <a href="/" className="hidden sm:block text-sm text-[#57534E] hover:text-[#4A6741] transition-colors">For families</a>
-            <a href="#apply" className="text-sm px-4 py-2 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium">Apply Now</a>
+            <a href="#apply" className="text-sm px-4 py-2 bg-[#4A6741] text-white rounded-[8px] hover:bg-[#292524] transition-colors font-medium">Apply Now</a>
           </div>
         </div>
       </nav>
@@ -87,7 +87,7 @@ export default function CaregiverPage() {
             co-op.care is a worker-owned home care cooperative. You&apos;re not an employee — you&apos;re an owner.
             Help families in your neighborhood and build equity every hour you work.
           </p>
-          <a href="#apply" className="mt-10 inline-block px-8 py-4 rounded-full text-base font-bold bg-sage-dark text-white hover:bg-bark transition-colors shadow-md">
+          <a href="#apply" className="mt-10 inline-block px-8 py-4 rounded-[8px] text-base font-bold bg-sage-dark text-white hover:bg-bark transition-colors shadow-md">
             Apply in 5 minutes
           </a>
           <p className="mt-4 text-sm text-bark-light/50">No experience required. W-2 employment. Health insurance included.</p>
@@ -330,7 +330,7 @@ export default function CaregiverPage() {
         <div className="max-w-lg mx-auto">
           <h2 className="text-3xl font-bold mb-4">Ready to own your work?</h2>
           <p className="text-sage-light mb-8">Join Boulder&apos;s first worker-owned home care cooperative.</p>
-          <a href="#apply" className="inline-block px-8 py-4 rounded-full bg-white text-sage-dark font-bold hover:bg-sage-50 transition-colors">
+          <a href="#apply" className="inline-block px-8 py-4 rounded-[8px] bg-white text-sage-dark font-bold hover:bg-sage-50 transition-colors">
             Apply Now — 5 minutes
           </a>
         </div>

@@ -275,7 +275,7 @@ export default function TimeBankDashboard() {
             </div>
             <a
               href="/membership"
-              className="flex-shrink-0 text-sm px-5 py-2.5 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium whitespace-nowrap"
+              className="flex-shrink-0 text-sm px-5 py-2.5 bg-[#4A6741] text-white rounded-lg hover:bg-[#292524] transition-colors font-medium whitespace-nowrap"
             >
               View membership
             </a>

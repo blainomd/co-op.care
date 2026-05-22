@@ -140,7 +140,7 @@ export default function OfferHelpPage() {
             )}
             <a
               href="/time-bank"
-              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium"
+              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-[8px] hover:bg-[#292524] transition-colors font-medium"
             >
               Back to your Care Hours dashboard
             </a>
@@ -233,7 +233,7 @@ export default function OfferHelpPage() {
               <button
                 onClick={() => setStep("availability")}
                 disabled={selectedServices.length === 0}
-                className="w-full py-3.5 bg-[#4A6741] text-white rounded-full font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full py-3.5 bg-[#4A6741] text-white rounded-[8px] font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Continue &rarr;
               </button>
@@ -284,14 +284,14 @@ export default function OfferHelpPage() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setStep("service")}
-                  className="flex-1 py-3.5 border border-[#C5D4B5] text-[#57534E] rounded-full font-medium hover:border-[#4A6741] transition-colors"
+                  className="flex-1 py-3.5 border border-[#C5D4B5] text-[#57534E] rounded-[8px] font-medium hover:border-[#4A6741] transition-colors"
                 >
                   &larr; Back
                 </button>
                 <button
                   onClick={() => setStep("location")}
                   disabled={selectedDays.length === 0 || selectedTimes.length === 0}
-                  className="flex-1 py-3.5 bg-[#4A6741] text-white rounded-full font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex-1 py-3.5 bg-[#4A6741] text-white rounded-[8px] font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Continue &rarr;
                 </button>
@@ -347,14 +347,14 @@ export default function OfferHelpPage() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setStep("availability")}
-                  className="flex-1 py-3.5 border border-[#C5D4B5] text-[#57534E] rounded-full font-medium hover:border-[#4A6741] transition-colors"
+                  className="flex-1 py-3.5 border border-[#C5D4B5] text-[#57534E] rounded-[8px] font-medium hover:border-[#4A6741] transition-colors"
                 >
                   &larr; Back
                 </button>
                 <button
                   onClick={() => setStep("confirm")}
                   disabled={!zip || zip.length < 5}
-                  className="flex-1 py-3.5 bg-[#4A6741] text-white rounded-full font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex-1 py-3.5 bg-[#4A6741] text-white rounded-[8px] font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Review &rarr;
                 </button>
@@ -413,14 +413,14 @@ export default function OfferHelpPage() {
               <div className="flex gap-3">
                 <button
                   onClick={() => setStep("location")}
-                  className="flex-1 py-3.5 border border-[#C5D4B5] text-[#57534E] rounded-full font-medium hover:border-[#4A6741] transition-colors"
+                  className="flex-1 py-3.5 border border-[#C5D4B5] text-[#57534E] rounded-[8px] font-medium hover:border-[#4A6741] transition-colors"
                 >
                   &larr; Back
                 </button>
                 <button
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="flex-1 py-3.5 bg-[#4A6741] text-white rounded-full font-medium hover:bg-[#292524] transition-colors disabled:opacity-60"
+                  className="flex-1 py-3.5 bg-[#4A6741] text-white rounded-[8px] font-medium hover:bg-[#292524] transition-colors disabled:opacity-60"
                 >
                   {submitting ? "Saving..." : "Join the helper roster"}
                 </button>

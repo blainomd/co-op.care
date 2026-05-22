@@ -242,7 +242,7 @@ export default function BoulderPetition() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full px-6 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors disabled:opacity-60"
+                className="w-full px-6 py-4 rounded-lg text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors disabled:opacity-60"
               >
                 {submitting ? "Adding your name…" : "Add my name to the letter"}
               </button>

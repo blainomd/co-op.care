@@ -55,7 +55,7 @@ export default function DPCPage() {
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <a
               href="/assess"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm text-center"
+              className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-[#4A6741] text-white hover:bg-[#292524] transition-colors shadow-sm text-center"
             >
               Talk to Sage about DPC
             </a>
@@ -63,7 +63,7 @@ export default function DPCPage() {
               href="https://altru.care"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors text-center"
+              className="inline-block px-8 py-4 rounded-lg text-base font-semibold bg-white text-[#4A6741] border border-[#4A6741]/30 hover:border-[#4A6741] hover:bg-[#F0F5EE] transition-colors text-center"
             >
               Meet the practice &rarr;
             </a>
@@ -196,7 +196,7 @@ export default function DPCPage() {
           </p>
           <a
             href="/assess"
-            className="inline-block px-10 py-4 rounded-full text-base font-semibold bg-white text-[#4A6741] hover:bg-[#F0F5EE] transition-colors"
+            className="inline-block px-10 py-4 rounded-lg text-base font-semibold bg-white text-[#4A6741] hover:bg-[#F0F5EE] transition-colors"
           >
             Talk to Sage about DPC
           </a>

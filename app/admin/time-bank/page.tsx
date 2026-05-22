@@ -205,7 +205,7 @@ export default function AdminTimeBankPage() {
             {authError && <p className="text-red-400 text-sm">{authError}</p>}
             <button
               type="submit"
-              className="w-full py-3 bg-[#4A6741] text-white rounded-full font-medium hover:bg-[#C5D4B5] hover:text-[#292524] transition-colors"
+              className="w-full py-3 bg-[#4A6741] text-white rounded-lg font-medium hover:bg-[#C5D4B5] hover:text-[#292524] transition-colors"
             >
               Sign in
             </button>
@@ -484,7 +484,7 @@ export default function AdminTimeBankPage() {
                   )}
                   <button
                     type="submit"
-                    className="px-6 py-2.5 bg-[#4A6741] text-white rounded-full text-sm font-medium hover:bg-[#292524] transition-colors"
+                    className="px-6 py-2.5 bg-[#4A6741] text-white rounded-lg text-sm font-medium hover:bg-[#292524] transition-colors"
                   >
                     Assign match
                   </button>

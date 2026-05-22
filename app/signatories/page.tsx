@@ -314,7 +314,7 @@ export default function SignatoriesPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-white text-[#4A6741] font-bold py-4 rounded-full hover:bg-[#E8EFDF] transition-colors disabled:opacity-50"
+                className="w-full bg-white text-[#4A6741] font-bold py-4 rounded-lg hover:bg-[#E8EFDF] transition-colors disabled:opacity-50"
               >
                 {submitting ? "Submitting…" : "Add my name"}
               </button>
@@ -351,19 +351,19 @@ export default function SignatoriesPage() {
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/boulder"
-            className="inline-block text-sm px-5 py-2.5 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium"
+            className="inline-block text-sm px-5 py-2.5 bg-[#4A6741] text-white rounded-lg hover:bg-[#292524] transition-colors font-medium"
           >
             Read the Boulder petition →
           </Link>
           <Link
             href="/bch"
-            className="inline-block text-sm px-5 py-2.5 bg-white text-[#4A6741] border border-[#4A6741] rounded-full hover:bg-[#E8EFDF] transition-colors font-medium"
+            className="inline-block text-sm px-5 py-2.5 bg-white text-[#4A6741] border border-[#4A6741] rounded-lg hover:bg-[#E8EFDF] transition-colors font-medium"
           >
             For health systems →
           </Link>
           <Link
             href="/membership"
-            className="inline-block text-sm px-5 py-2.5 bg-white text-[#4A6741] border border-[#4A6741] rounded-full hover:bg-[#E8EFDF] transition-colors font-medium"
+            className="inline-block text-sm px-5 py-2.5 bg-white text-[#4A6741] border border-[#4A6741] rounded-lg hover:bg-[#E8EFDF] transition-colors font-medium"
           >
             Founding Member details →
           </Link>

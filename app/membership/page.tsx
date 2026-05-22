@@ -200,7 +200,7 @@ export default function MembershipPage() {
                 </ul>
                 <a
                   href={tier.href}
-                  className={`block text-center py-3.5 rounded-full font-semibold transition-colors ${
+                  className={`block text-center py-3.5 rounded-lg font-semibold transition-colors ${
                     tier.highlight
                       ? "bg-white text-[#4A6741] hover:bg-[#F0F5EE]"
                       : "bg-[#4A6741] text-white hover:bg-[#292524]"
@@ -295,7 +295,7 @@ export default function MembershipPage() {
           </p>
           <a
             href="/assess"
-            className="inline-block px-9 py-4 rounded-full bg-[#4A6741] text-white font-semibold hover:bg-[#292524] transition-colors text-base"
+            className="inline-block px-9 py-4 rounded-lg bg-[#4A6741] text-white font-semibold hover:bg-[#292524] transition-colors text-base"
           >
             Start free — talk to Sage
           </a>

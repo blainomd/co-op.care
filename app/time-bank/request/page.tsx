@@ -80,7 +80,7 @@ export default function RequestHelpPage() {
             </p>
             <a
               href="/time-bank"
-              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-full hover:bg-[#292524] transition-colors font-medium"
+              className="inline-block text-sm px-6 py-3 bg-[#4A6741] text-white rounded-lg hover:bg-[#292524] transition-colors font-medium"
             >
               Back to your Care Hours dashboard
             </a>
@@ -212,7 +212,7 @@ export default function RequestHelpPage() {
           <button
             onClick={handleSubmit}
             disabled={!canSubmit || submitting}
-            className="w-full py-3.5 bg-[#4A6741] text-white rounded-full font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full py-3.5 bg-[#4A6741] text-white rounded-lg font-medium hover:bg-[#292524] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {submitting ? "Submitting your request..." : "Submit request for matching"}
           </button>

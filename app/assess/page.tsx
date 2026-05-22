@@ -279,13 +279,13 @@ function Confirmation({
       <div className="flex flex-col sm:flex-row gap-3">
         <a
           href="/membership"
-          className="px-6 py-3 rounded-full bg-[#4A7C59] text-white font-medium text-sm text-center hover:bg-[#3a6349] transition-colors"
+          className="px-6 py-3 rounded-lg bg-[#4A7C59] text-white font-medium text-sm text-center hover:bg-[#3a6349] transition-colors"
         >
           See $59/mo membership
         </a>
         <a
           href="/"
-          className="px-6 py-3 rounded-full bg-[#F0F5EE] text-[#292524] font-medium text-sm text-center hover:bg-[#C5D4B5]/30 transition-colors"
+          className="px-6 py-3 rounded-lg bg-[#F0F5EE] text-[#292524] font-medium text-sm text-center hover:bg-[#C5D4B5]/30 transition-colors"
         >
           Back to home
         </a>
